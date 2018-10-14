@@ -22,12 +22,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { SingleUserComponent } from './components/single-user/single-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonalDataComponent,
     SingleLotComponent,
+    UserListComponent,
+    SingleUserComponent,
   ],
   imports: [
     BrowserModule,

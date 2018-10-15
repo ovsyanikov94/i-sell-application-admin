@@ -1,4 +1,29 @@
 <div class="container-fluid" style="margin-top: 20px">
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel  hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Добавить новую роль
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <input name="userRoleNew"[(ngModel)]="newRole" matInput placeholder="Название" [formControl]="roleFormControl">
+        <mat-error *ngIf="roleFormControl.hasError('pattern') && !roleFormControl.hasError('required')">
+          Введите корректное название роли. Длина от 4 до 20 русских символов
+        </mat-error>
+        <mat-error *ngIf="roleFormControl.hasError('required')">
+          Название <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-action-row>
+        <button name="newRole" mat-button color="primary"  (click)="addRole()" ngDefaultControl >Добавить</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
@@ -13,7 +38,17 @@
 
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
-        <td mat-cell *matCellDef="let row">{{row.title}} </td>
+        <td mat-cell *matCellDef="let row">
+          <mat-form-field class="example-full-width col-12">
+            <input name="userRole" matInput value="{{row.title}}"  [formControl]="roleFormControl">
+              <mat-error *ngIf="roleFormControl.hasError('pattern') && !roleFormControl.hasError('required')">
+                Введите корректное название роли. Длина от 4 до 20 русских символов
+              </mat-error>
+            <mat-error *ngIf="roleFormControl.hasError('required')">
+              Название <strong>обязательно</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="count">
@@ -28,7 +63,7 @@
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef > Удалить </th>
-        <td mat-cell *matCellDef="let row"><button mat-raised-button color="warn">Удалить</button></td>
+        <td mat-cell *matCellDef="let row"><button (click)="deleteModal($event, row)" mat-raised-button color="warn">Удалить</button></td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

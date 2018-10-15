@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 
 //MY COMPONENTS
-import { AddRolesComponent } from './components/add-roles/add-roles.component';
 import { ShowRolesComponent } from './components/show-roles/show-roles.component';
+import {DeleteModalComponent} from "./modals/delete.modal/delete.modal.component";
+import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 
+//MATREIAL
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -17,12 +19,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule, MatSortModule} from "@angular/material";
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddRolesComponent,
-    ShowRolesComponent
+    ShowRolesComponent,
+    DeleteModalComponent,
+    AdminProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +44,16 @@ import {MatPaginatorModule, MatSortModule} from "@angular/material";
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatListModule
   ],
   providers: [],
+  entryComponents: [
+    DeleteModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

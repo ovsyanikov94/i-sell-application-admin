@@ -1,0 +1,95 @@
+<div class="container-fluid" style="margin-top: 20px">
+
+  <div class="row justify-content-center">
+
+    <div class="col-12">
+
+        <div class="row justify-content-center">
+
+          <div class="row justify-content-center mat-elevation-z8 form-auth">
+
+            <div class="row justify-content-center col-12" >
+              <div class="row  col-12" style="margin: 20px 0px 20px 0px">
+                <div class="row justify-content-center col-2">
+                  <mat-list>
+                    <mat-list-item>
+                      <img  mat-list-avatar src="{{admin?.adminPhoto}}" alt="Desc 1" style="width: 100px; height: 100px">
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+
+
+                <div class="row justify-content-center col-10">
+                  <mat-form-field class="example-full-width col-5">
+                    <input name="userName" matInput placeholder="Имя" [(ngModel)]="admin.adminName" [formControl]="nameFormControl">
+                    <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
+                      Введите корректный имя. Длина от 2 до 25 латинских символов
+                    </mat-error>
+                    <mat-error *ngIf="nameFormControl.hasError('required')">
+                      Имя <strong>обязателен</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width col-5">
+                    <input name="userLastname" matInput placeholder="Фамилия" [(ngModel)]="admin.adminLastname" [formControl]="lastNameFormControl">
+                    <mat-error *ngIf="lastNameFormControl.hasError('pattern') && !lastNameFormControl.hasError('required')">
+                      Введите корректный фамилию. Длина от 2 до 25 латинских символов
+                    </mat-error>
+                    <mat-error *ngIf="lastNameFormControl.hasError('required')">
+                      фамилия <strong>обязателен</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+
+              </div>
+            </div>
+
+
+
+            <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
+              <mat-form-field class="example-full-width col-4">
+                <input name="userLogin" matInput placeholder="Логин" [(ngModel)]="admin.adminLogin" [formControl]="loginFormControl">
+                <mat-error *ngIf="loginFormControl.hasError('pattern') && !loginFormControl.hasError('required')">
+                  Введите корректный логин. Длина от 4 до 20 латинских символов
+                </mat-error>
+                <mat-error *ngIf="loginFormControl.hasError('required')">
+                  Логин <strong>обязателен</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width col-4">
+                <input name="userEmail" matInput placeholder="Email" [(ngModel)]="admin.adminEmail" [formControl]="emailFormControl">
+                <mat-error *ngIf="emailFormControl.hasError('pattern') && !emailFormControl.hasError('required')">
+                  Введите корректный email. название@наименованиен.домен
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  email <strong>обязателен</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width col-4">
+                <input name="userPhone" matInput placeholder="Телефон" [(ngModel)]="admin.adminPhone" [formControl]="phoneFormControl">
+                <mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
+                  Введите корректный номер телефона. +380ХХХХХХХХХХ
+                </mat-error>
+                <mat-error *ngIf="phoneFormControl.hasError('required')">
+                  телефон <strong>обязателен</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+
+
+
+
+          </div>
+
+        </div>
+
+
+    </div>
+
+  </div>
+
+</div>

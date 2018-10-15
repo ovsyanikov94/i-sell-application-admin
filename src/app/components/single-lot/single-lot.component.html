@@ -1,60 +1,79 @@
 
-<div class="container-fluid">
+<div class="container mat-elevation-z20">
+
+  <div class="row justify-content-start text-left">
+    <a style="font-size: small; margin-left: 2%; margin-bottom: 1%" routerLink="/main/card-lot">&larr; Вернуться назад</a>
+  </div>
 
   <div class="row justify-content-center text-center">
 
     <div class="col">
+      <div class="row justify-content-center text-center" >
+        <div class="container-fluid">
+          <div>
 
-      <!--ФОТОГРАФИИ ЛОТА-->
-      <div *ngIf="lot.lotFoto.length > 1">
-        <img *ngFor="let photo of lot.lotFoto" mat-card-image style="width: 235px" src="{{photo}}" alt="image">
+            <angular-image-slider *ngIf="lot.lotFoto.length > 1" [images]="lot.lotFoto"></angular-image-slider>
+
+          </div>
+        </div>
       </div>
+
 
       <!-- СПИСОК ОПИСАНИЯ -->
-      <mat-list role="list">
+      <div class="container justify-content-center">
+        <div class="col-12">
 
-        <mat-list-item role="listitem">Пользователь:<b>{{user.userLogin}}</b></mat-list-item>
-        <mat-list-item role="listitem">Наименование товара: <b>{{lot.lotName}}</b></mat-list-item>
-        <mat-list-item role="listitem">Категория товара: <b>{{lot.lotCategory}}</b></mat-list-item>
-        <mat-list-item role="listitem">Статус лота: <b>{{lot.lotStatus}}</b></mat-list-item>
-        <mat-list-item role="listitem">Дата размещения торга: <b>{{lot.lotSendDate}}</b></mat-list-item>
-        <mat-list-item role="listitem">Дата начала торга: <b>{{lot.lotStartDate}}</b></mat-list-item>
-        <mat-list-item role="listitem">Начальная цена: <b>{{lot.lotStartPrice}}</b></mat-list-item>
-        <mat-list-item role="listitem">Описание: {{lot.lotDescription}}</mat-list-item>
+          <mat-list>
 
-      </mat-list>
+            <mat-list-item>{{lot.lotName}}</mat-list-item>
+            <mat-divider></mat-divider>
 
-      <div class="button-row">
-        <button mat-raised-button color="warn">Отклонить</button>
-        <button mat-raised-button color="primary">Одобрить</button>
+            <mat-list-item><b>Пользователь</b>: {{user.userLogin}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item><b>Наименование товара</b>: {{lot.lotName}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item><b>Категория товара</b>: {{lot.lotCategory}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item><b>Статус лота</b>: {{lot.lotStatus}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item><b>Дата добавления лота</b>: {{lot.lotSendDate}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item><b>Дата начала торга</b>: {{lot.lotStartDate}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item><b>Начальная цена</b>: {{lot.lotStartPrice}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+
+            <div class="row justify-content-start">
+              <div class="col-12">
+                <b>Описание товара:</b>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                {{lot.lotDescription}}
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+
+
+          </mat-list>
+        </div>
+
       </div>
 
+      <div class="button-row">
+        <button (click)="openModal()" mat-raised-button color="warn">Отклонить</button>
+        <button mat-raised-button color="primary">Одобрить</button>
 
-
-    </div>
-
-
-
-    <!-- СПИСОК ОПИСАНИЯ -->
-    <!--<mat-list>-->
-      <!--<mat-list-item>{{lot.lotName}}</mat-list-item>-->
-      <!--<mat-divider></mat-divider>-->
-
-      <!--<mat-list-item>Категория товара: {{lot.lotCategory}}</mat-list-item>-->
-      <!--<mat-divider></mat-divider>-->
-
-      <!--<mat-list-item>Статус лота: {{lot.lotStatus}}</mat-list-item>-->
-      <!--<mat-divider></mat-divider>-->
-
-      <!--<mat-list-item>Дата начала торга: {{lot.lotStartDate}</mat-list-item>-->
-      <!--<mat-divider></mat-divider>-->
-
-      <!--<mat-list-item>Начальная цена: {{lot.lotStartPrice}}</mat-list-item>-->
-      <!--<mat-divider></mat-divider>-->
-
-      <!--<mat-list-item>Описание: {{lot.lotDescription}</mat-list-item>-->
-
-    <!--</mat-list>-->
+      </div>
 
 
   </div>

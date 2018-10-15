@@ -14,17 +14,22 @@ import {MatButtonModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 //COMPONENTS
 import { SingleLotComponent } from './components/single-lot/single-lot.component';
+import { RejectModalComponent } from './modals/reject-modal/reject-modal.component';
 
+//ANGULAR IMAGE SLIDER
+import { SliderModule } from 'angular-image-slider';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SingleLotComponent
+    SingleLotComponent,
+    RejectModalComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +40,11 @@ import { SingleLotComponent } from './components/single-lot/single-lot.component
     MatCardModule,
     MatDividerModule,
     MatListModule,
+    SliderModule,
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RejectModalComponent]
 })
 export class AppModule { }

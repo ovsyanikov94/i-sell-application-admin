@@ -5,6 +5,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { CategoryComponent } from './components/category/category.component';
 import { ChangeCategoryComponent } from './components/changeCategory/changeCategory.component';
 
+
 const routes: Routes = [
   {
     path: 'main',

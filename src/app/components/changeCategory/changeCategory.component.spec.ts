@@ -10,7 +10,7 @@ describe('ChangeCategoryComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ChangeCategoryComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

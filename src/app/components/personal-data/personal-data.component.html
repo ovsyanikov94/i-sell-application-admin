@@ -1,5 +1,5 @@
  <div class="row justify-content-start">
-    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12" >
+    <!--<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12" >
       <mat-card style="padding: 12px">
 
           <mat-list>
@@ -17,28 +17,33 @@
 
 
       </mat-card>
-    </div>
-    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12" >
+    </div>-->
+ <!--  <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12" >-->
+    <div class="col-12" >
       <mat-tab-group>
         <mat-tab label="Подробная информация">
-          <div style="margin: 1%">
-            <mat-list>
-              <h3 mat-subheader>Имя</h3>
-              <mat-list-item>{{user.userName}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <h3 mat-subheader>Фамилия</h3>
-              <mat-list-item>{{user.userLastname}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <h3 mat-subheader>Логин</h3>
-              <mat-list-item>{{user.userLogin}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <h3 mat-subheader>телефон</h3>
-              <mat-list-item>{{user.userPhone}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <h3 mat-subheader>email</h3>
-              <mat-list-item>{{user.userEmail}}</mat-list-item>
-              <mat-divider></mat-divider>
-          </mat-list>
+          <div class="justify-content-center container-fluid" style="width: 65%;">
+            <div >
+              <mat-list>
+
+                <img  mat-list-avatar src="{{user?.userPhoto}}" alt="Desc 1" style="width: 60%; height: 60%">
+                <h3 mat-subheader>Имя</h3>
+                <mat-list-item>{{user.userName}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 mat-subheader>Фамилия</h3>
+                <mat-list-item>{{user.userLastname}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 mat-subheader>Логин</h3>
+                <mat-list-item>{{user.userLogin}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 mat-subheader>телефон</h3>
+                <mat-list-item>{{user.userPhone}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 mat-subheader>email</h3>
+                <mat-list-item>{{user.userEmail}}</mat-list-item>
+                <mat-divider></mat-divider>
+              </mat-list>
+            </div>
           </div>
         </mat-tab>
         <mat-tab label="выставленные лоты ">

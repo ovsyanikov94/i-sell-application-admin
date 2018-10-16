@@ -86,8 +86,8 @@ export class CategoryComponent implements OnInit {
       categoryTitle: string;
     };
 
-    categorData.categoryID = 1;
-    categorData.categoryTitle = event.target;
+    categorData.categoryID = event.target.id;
+    categorData.categoryTitle = event.target.name;
 
     if ( event instanceof KeyboardEvent && event.code === 'Enter' ){
       this.openDialog(categorData);

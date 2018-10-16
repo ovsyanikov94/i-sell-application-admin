@@ -28,7 +28,6 @@ import {MatTableModule} from '@angular/material/table';
 import { MainComponent } from './components/main/main.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { CategoryComponent } from './components/category/category.component';
-import { ChangeCategoryComponent } from './components/changeCategory/changeCategory.component';
 import { DeleteCategoryModalComponent } from './modals/deleteCategory.modal/deleteCategory.modal.component';
 @NgModule({
   declarations: [
@@ -36,7 +35,6 @@ import { DeleteCategoryModalComponent } from './modals/deleteCategory.modal/dele
     MainComponent,
     MainContentComponent,
     CategoryComponent,
-    ChangeCategoryComponent,
     DeleteCategoryModalComponent
   ],
   imports: [

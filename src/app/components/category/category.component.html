@@ -71,7 +71,7 @@
 
         <ng-container matColumnDef="delete">
           <th mat-header-cell *matHeaderCellDef > Удалить </th>
-          <td mat-cell *matCellDef="let row"><button (click)="delete($event)" mat-raised-button color="warn" style="font-size: 0.8em">Удалить</button></td>
+          <td mat-cell *matCellDef="let row"><button  id="{{row.categoryID}}" name="{{row.categoryTitle}}" (click)="delete($event)" mat-raised-button color="warn" style="font-size: 0.8em">Удалить</button></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

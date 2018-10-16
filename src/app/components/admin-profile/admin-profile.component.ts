@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 
 import {Admin} from '../../models/admin/Admin';
+import {Lot} from '../../models/lot/Lot';
 
 @Component({
   selector: 'app-admin-profile',
@@ -11,6 +12,9 @@ import {Admin} from '../../models/admin/Admin';
 export class AdminProfileComponent implements OnInit {
 
   public admin: Admin = new Admin();
+
+  public approvedLot: Lot[] =[];
+  public deviationsLot: Lot[] =[];
 
   public nameFormControl = new FormControl('', [
     Validators.required,
@@ -33,11 +37,17 @@ export class AdminProfileComponent implements OnInit {
     Validators.pattern(/^((\+3)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/ )
   ]);
 
+  public avatarFormControl = new FormControl('');
 
+  constructor() {
 
-  constructor() { }
+    for (let i = 0; i < 5; i++) {
+      this.approvedLot.push(this.admin.approvedLot[i]);
+      this.deviationsLot.push(this.admin.deviationsLot[i]);
+    }//for
+  }
 
-  ngOnInit() {
+  ngOnInit(){
   }
 
 }

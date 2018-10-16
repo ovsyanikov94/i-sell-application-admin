@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import {MatListModule} from '@angular/material';
     MatDialogModule,
     MatExpansionModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MaterialFileInputModule,
+    MatIconModule
   ],
   providers: [],
   entryComponents: [

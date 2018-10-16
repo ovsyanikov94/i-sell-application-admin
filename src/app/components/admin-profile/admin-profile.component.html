@@ -1,4 +1,4 @@
-<div class="container-fluid" style="margin-top: 20px">
+<div class="container-fluid col-10" style="margin-top: 20px">
 
   <div class="row justify-content-center">
 
@@ -9,18 +9,26 @@
           <div class="row justify-content-center mat-elevation-z8 form-auth">
 
             <div class="row justify-content-center col-12" >
-              <div class="row  col-12" style="margin: 20px 0px 20px 0px">
-                <div class="row justify-content-center col-2">
-                  <mat-list>
+              <div class="row  col-12" style="margin: 20px 0px 10px 0px">
+                <div class="row justify-content-center col-2" style="margin: 5px 0px 5px 0px">
+
+                  <mat-list >
                     <mat-list-item>
                       <img  mat-list-avatar src="{{admin?.adminPhoto}}" alt="Desc 1" style="width: 100px; height: 100px">
                     </mat-list-item>
                   </mat-list>
+
+                  <mat-form-field style="width: 100%; margin-top: 10px">
+                    <ngx-mat-file-input [formControl]="avatarFormControl" placeholder="Добавить фото"></ngx-mat-file-input>
+                    <mat-icon matSuffix>folder</mat-icon>
+                  </mat-form-field>
+
+
                 </div>
 
 
                 <div class="row justify-content-center col-10">
-                  <mat-form-field class="example-full-width col-5">
+                  <mat-form-field class="example-full-width col-lg-5 col-xl-5 col-md-5 col-sm-12">
                     <input name="userName" matInput placeholder="Имя" [(ngModel)]="admin.adminName" [formControl]="nameFormControl">
                     <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
                       Введите корректный имя. Длина от 2 до 25 латинских символов
@@ -79,8 +87,41 @@
               </mat-form-field>
             </div>
 
+            <p class="text-left row"> Одобренные лоты</p>
+            <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
+
+              <div *ngFor="let lot of approvedLot" class="col-lg-2 col-xl-2 col-md-4 col-sm-12" >
+                <mat-card class="example-card">
+                  <mat-card-header >
+                    <div class="row justify-content-center col-12">
+                      <mat-list class="row justify-content-center ">
+                        <mat-list-item >
+                          <img  mat-list-avatar src="{{lot?.lotSeller.userPhoto}}" alt="Desc 1" style="width: 100px; height: 100px; ">
+                        </mat-list-item>
+                      </mat-list>
+                      <div style="margin-top: 20px">
+                        <mat-card-title>{{lot.lotSeller.userName}} {{lot.lotSeller.userLastname}}</mat-card-title>
+                        <mat-card-subtitle>{{lot.lotSeller.userLogin}}</mat-card-subtitle>
+                      </div>
+                    </div>
 
 
+                  </mat-card-header >
+
+                  <img mat-card-image src="{{lot.lotFoto[0]}}" alt="Photo" style="margin-top: 20px">
+                  <mat-card-content style="width: 100%">
+                    <p>
+                      Дата одобрения
+                    </p>
+                    <div>
+                      {{lot.dateChecked}}
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+
+              </div>
+
+            </div>
 
 
           </div>

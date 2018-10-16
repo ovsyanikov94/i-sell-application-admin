@@ -194,6 +194,7 @@ export class Lot {
     this._lotSendDate = new Date();
     this._lotStartDate = new Date();
     this._lotEndDate = new Date();
+    this._dateChecked = new Date();
 
     const comment: Comment = new Comment();
 

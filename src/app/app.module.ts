@@ -14,7 +14,6 @@ import { AdminProfileComponent } from './components/admin-profile/admin-profile.
 
 //SLIDER
 import { SliderModule } from 'angular-image-slider';
-import {SlideshowModule} from 'ng-simple-slideshow';
 
 //MATREIAL
 import { MatSelectModule } from '@angular/material/select';
@@ -62,8 +61,7 @@ import { RejectLotComponent } from './components/reject-lot/reject-lot.component
     MatListModule,
     MaterialFileInputModule,
     MatIconModule,
-    SliderModule,
-    SlideshowModule
+    SliderModule
   ],
   providers: [],
   entryComponents: [

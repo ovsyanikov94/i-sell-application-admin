@@ -12,6 +12,10 @@ import { ShowRolesComponent } from './components/show-roles/show-roles.component
 import {DeleteModalComponent} from "./modals/delete.modal/delete.modal.component";
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 
+//SLIDER
+import { SliderModule } from 'angular-image-slider';
+import {SlideshowModule} from 'ng-simple-slideshow';
+
 //MATREIAL
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -26,13 +30,17 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatIconModule} from '@angular/material/icon';
+import { ApprovedLotComponent } from './components/approved-lot/approved-lot.component';
+import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShowRolesComponent,
     DeleteModalComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    ApprovedLotComponent,
+    RejectLotComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +61,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatListModule,
     MaterialFileInputModule,
-    MatIconModule
+    MatIconModule,
+    SliderModule,
+    SlideshowModule
   ],
   providers: [],
   entryComponents: [

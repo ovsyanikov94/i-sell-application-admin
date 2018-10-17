@@ -1,29 +1,33 @@
 <div class="container-fluid" style="margin-top: 20px">
+  <div class="row ">
+    <div class="col-6">
+      <mat-accordion class="example-headers-align">
+        <mat-expansion-panel  hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Добавить новую роль
+            </mat-panel-title>
+          </mat-expansion-panel-header>
 
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel  hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Добавить новую роль
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+          <mat-form-field>
+            <input name="userRoleNew"[(ngModel)]="newRole" matInput placeholder="Название" [formControl]="roleFormControl">
+            <mat-error *ngIf="roleFormControl.hasError('pattern') && !roleFormControl.hasError('required')">
+              Введите корректное название роли. Длина от 4 до 20 русских символов
+            </mat-error>
+            <mat-error *ngIf="roleFormControl.hasError('required')">
+              Название <strong>обязательно</strong>
+            </mat-error>
+          </mat-form-field>
 
-      <mat-form-field>
-        <input name="userRoleNew"[(ngModel)]="newRole" matInput placeholder="Название" [formControl]="roleFormControl">
-        <mat-error *ngIf="roleFormControl.hasError('pattern') && !roleFormControl.hasError('required')">
-          Введите корректное название роли. Длина от 4 до 20 русских символов
-        </mat-error>
-        <mat-error *ngIf="roleFormControl.hasError('required')">
-          Название <strong>обязательно</strong>
-        </mat-error>
-      </mat-form-field>
+          <mat-action-row>
+            <button name="newRole" mat-button color="primary"  (click)="addRole()" ngDefaultControl >Добавить</button>
+          </mat-action-row>
+        </mat-expansion-panel>
 
-      <mat-action-row>
-        <button name="newRole" mat-button color="primary"  (click)="addRole()" ngDefaultControl >Добавить</button>
-      </mat-action-row>
-    </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
 
-  </mat-accordion>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>

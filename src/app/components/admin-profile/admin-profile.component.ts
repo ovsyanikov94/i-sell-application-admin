@@ -14,7 +14,7 @@ export class AdminProfileComponent implements OnInit {
   public admin: Admin = new Admin();
 
   public approvedLot: Lot[] =[];
-  public deviationsLot: Lot[] =[];
+  public rejectedLot: Lot[] =[];
 
   public nameFormControl = new FormControl('', [
     Validators.required,
@@ -43,7 +43,7 @@ export class AdminProfileComponent implements OnInit {
 
     for (let i = 0; i < 5; i++) {
       this.approvedLot.push(this.admin.approvedLot[i]);
-      this.deviationsLot.push(this.admin.deviationsLot[i]);
+      this.rejectedLot.push(this.admin.rejectedLot[i]);
     }//for
   }
 

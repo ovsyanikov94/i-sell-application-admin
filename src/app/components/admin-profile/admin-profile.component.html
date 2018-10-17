@@ -10,7 +10,7 @@
 
             <div class="row justify-content-center col-12" >
               <div class="row  col-12" style="margin: 20px 0px 10px 0px">
-                <div class="row justify-content-center col-2" style="margin: 5px 0px 5px 0px">
+                <div class="row justify-content-center col-2" style="margin: 5px 20px 5px 0px">
 
                   <mat-list >
                     <mat-list-item>
@@ -28,7 +28,7 @@
 
 
                 <div class="row justify-content-center col-10">
-                  <mat-form-field class="example-full-width col-lg-5 col-xl-5 col-md-5 col-sm-12">
+                  <mat-form-field class="example-full-width col-lg-5 col-xl-5 col-md-10 col-sm-12">
                     <input name="userName" matInput placeholder="Имя" [(ngModel)]="admin.adminName" [formControl]="nameFormControl">
                     <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
                       Введите корректный имя. Длина от 2 до 25 латинских символов
@@ -38,7 +38,7 @@
                     </mat-error>
                   </mat-form-field>
 
-                  <mat-form-field class="example-full-width col-5">
+                  <mat-form-field class="example-full-width col-lg-5 col-xl-5 col-md-10 col-sm-12">
                     <input name="userLastname" matInput placeholder="Фамилия" [(ngModel)]="admin.adminLastname" [formControl]="lastNameFormControl">
                     <mat-error *ngIf="lastNameFormControl.hasError('pattern') && !lastNameFormControl.hasError('required')">
                       Введите корректный фамилию. Длина от 2 до 25 латинских символов
@@ -56,8 +56,8 @@
 
 
             <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
-              <mat-form-field class="example-full-width col-4">
-                <input name="userLogin" matInput placeholder="Логин" [(ngModel)]="admin.adminLogin" [formControl]="loginFormControl">
+              <mat-form-field class="example-full-width col-lg-4 col-xl-4 col-md-8 col-sm-12" (click)="disabled=true" (mouseout)="disabled=true">
+                <input name="adminLogin" [attr.disabled]="disabled?'':null" matInput placeholder="Логин" [(ngModel)]="admin.adminLogin" [formControl]="loginFormControl">
                 <mat-error *ngIf="loginFormControl.hasError('pattern') && !loginFormControl.hasError('required')">
                   Введите корректный логин. Длина от 4 до 20 латинских символов
                 </mat-error>
@@ -66,7 +66,7 @@
                 </mat-error>
               </mat-form-field>
 
-              <mat-form-field class="example-full-width col-4">
+              <mat-form-field class="example-full-width col-lg-4 col-xl-4 col-md-8 col-sm-12">
                 <input name="userEmail" matInput placeholder="Email" [(ngModel)]="admin.adminEmail" [formControl]="emailFormControl">
                 <mat-error *ngIf="emailFormControl.hasError('pattern') && !emailFormControl.hasError('required')">
                   Введите корректный email. название@наименованиен.домен
@@ -76,7 +76,7 @@
                 </mat-error>
               </mat-form-field>
 
-              <mat-form-field class="example-full-width col-4">
+              <mat-form-field class="example-full-width col-lg-4 col-xl-4 col-md-8 col-sm-12">
                 <input name="userPhone" matInput placeholder="Телефон" [(ngModel)]="admin.adminPhone" [formControl]="phoneFormControl">
                 <mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
                   Введите корректный номер телефона. +380ХХХХХХХХХХ
@@ -87,10 +87,14 @@
               </mat-form-field>
             </div>
 
-            <p class="text-left row"> Одобренные лоты</p>
+            <div class="row justify-content-end col-12">
+              <button mat-stroked-button color="primary">Сохранить личные данные</button>
+            </div>
+
+            <a style="text-decoration: none; margin-top: 5px" routerLink="/approved-lot" class="text-left row"> <h3>Одобренные лоты</h3></a>
             <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
 
-              <div *ngFor="let lot of approvedLot" class="col-lg-2 col-xl-2 col-md-4 col-sm-12" >
+              <div *ngFor="let lot of approvedLot" class="col-xl-2 col-lg-3  col-md-4 col-sm-12" style="margin-top: 10px" >
                 <mat-card class="example-card">
                   <mat-card-header >
                     <div class="row justify-content-center col-12">
@@ -108,13 +112,18 @@
 
                   </mat-card-header >
 
+                  <div class="row justify-content-center " style="margin-top: 10px">
+                    <div class="justify-content-center col-12">  {{lot.lotName}}</div>
+                  </div>
+
                   <img mat-card-image src="{{lot.lotFoto[0]}}" alt="Photo" style="margin-top: 20px">
                   <mat-card-content style="width: 100%">
+
                     <p>
                       Дата одобрения
                     </p>
                     <div>
-                      {{lot.dateChecked}}
+                      {{lot.dateChecked | date: 'dd-MM-yyyy'}}
                     </div>
                   </mat-card-content>
                 </mat-card>
@@ -123,6 +132,43 @@
 
             </div>
 
+            <a style="text-decoration: none" routerLink="/rejected-lot" class="text-left row"> <h3>Отклоненные лоты</h3></a>
+            <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
+
+              <div *ngFor="let lot of rejectedLot" class="col-xl-2 col-lg-3  col-md-4 col-sm-12"  style="margin-top: 10px">
+                <mat-card class="example-card">
+                  <mat-card-header >
+                    <div class="row justify-content-center col-12">
+                      <mat-list class="row justify-content-center ">
+                        <mat-list-item >
+                          <img  mat-list-avatar src="{{lot?.lotSeller.userPhoto}}" alt="Desc 1" style="width: 100px; height: 100px; ">
+                        </mat-list-item>
+                      </mat-list>
+                      <div style="margin-top: 20px">
+                        <mat-card-title>{{lot.lotSeller.userName}} {{lot.lotSeller.userLastname}}</mat-card-title>
+                        <mat-card-subtitle>{{lot.lotSeller.userLogin}}</mat-card-subtitle>
+                      </div>
+                    </div>
+                  </mat-card-header >
+
+                  <div class="row justify-content-center " style="margin-top: 10px">
+                    <div class="justify-content-center col-12">  {{lot.lotName}}</div>
+                  </div>
+
+                  <img mat-card-image src="{{lot.lotFoto[0]}}" alt="Photo" style="margin-top: 20px">
+                  <mat-card-content style="width: 100%">
+                    <p>
+                      Дата отклонения
+                    </p>
+                    <div>
+                      {{lot.dateChecked | date: 'dd-MM-yyyy'}}
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+
+              </div>
+
+            </div>
 
           </div>
 

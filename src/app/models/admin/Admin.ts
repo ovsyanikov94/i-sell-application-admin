@@ -2,12 +2,12 @@
 import { Lot } from '../lot/Lot';
 
 export class Admin{
-  get deviationsLot(): Lot[] {
-    return this._deviationsLot;
+  get rejectedLot(): Lot[] {
+    return this._rejectedLot;
   }
 
-  set deviationsLot(value: Lot[]) {
-    this._deviationsLot = value;
+  set rejectedLot(value: Lot[]) {
+    this._rejectedLot = value;
   }
   get approvedLot(): Lot[] {
     return this._approvedLot;
@@ -91,7 +91,7 @@ export class Admin{
   private _adminPhone: string;
   private _adminPhoto: string;
   private _approvedLot: Lot[] =[];
-  private _deviationsLot: Lot[]=[];
+  private _rejectedLot: Lot[]=[];
 
   constructor(){
 
@@ -101,7 +101,7 @@ export class Admin{
     this._adminName = "Vasyz"
     this._adminLastname = "Petrov";
     this._adminPhone = "435355436"
-    this._adminPhoto = "https://cdnimg.rg.ru/img/content/156/70/54/1_d_850.jpg";
+    this._adminPhoto = "https://www.meme-arsenal.com/memes/b3520d14f31986f0c13c9e47f76f8331.jpg";
 
     const lot: Lot = new Lot();
 
@@ -110,7 +110,7 @@ export class Admin{
     }//for
 
     for ( let i = 0 ; i < 8 ; i++ ){
-      this._deviationsLot.push(lot);
+      this._rejectedLot.push(lot);
     }//for
 
   }

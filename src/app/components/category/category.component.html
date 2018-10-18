@@ -50,13 +50,13 @@
 
         <ng-container name="nameCategory" matColumnDef="title" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
-          <td mat-cell *matCellDef="let row">
+          <td mat-cell *matCellDef="let row; let i = index">
             <mat-form-field class="col-10 example-full-width">
-              <input name="nameCategory" matInput placeholder="Введите название категории" value={{row.categoryTitle}} [formControl]="categoryNameFormControl">
-              <mat-error *ngIf="categoryNameFormControl.hasError('pattern') && !categoryNameFormControl.hasError('required')">
+              <input name="nameCategory" matInput placeholder="Введите название категории" [(ngModel)]="row.categoryTitle" [formControl]="formControls[i]">
+              <mat-error *ngIf="formControls[i].hasError('pattern') && !formControls[i].hasError('required')">
                 Введите корректное название категории
               </mat-error>
-              <mat-error *ngIf="categoryNameFormControl.hasError('required')">
+              <mat-error *ngIf="formControls[i].hasError('required')">
                 Название категории <strong>не должно быть пустым</strong>
               </mat-error>
             </mat-form-field>
@@ -71,7 +71,7 @@
 
         <ng-container matColumnDef="delete">
           <th mat-header-cell *matHeaderCellDef > Удалить </th>
-          <td mat-cell *matCellDef="let row"><button  id="{{row.categoryID}}" name="{{row.categoryTitle}}" (click)="delete($event)" mat-raised-button color="warn" style="font-size: 0.8em">Удалить</button></td>
+          <td mat-cell *matCellDef="let row"><button (click)="delete($event , row)" mat-raised-button color="warn" style="font-size: 0.8em">Удалить</button></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -22,20 +22,20 @@ import {MatListModule} from '@angular/material';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
 
 //MY-COMPONENTS
 import { MainComponent } from './components/main/main.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { CategoryComponent } from './components/category/category.component';
-import { ChangeCategoryComponent } from './components/changeCategory/changeCategory.component';
-
+import { DeleteCategoryModalComponent } from './modals/deleteCategory.modal/deleteCategory.modal.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     MainContentComponent,
     CategoryComponent,
-    ChangeCategoryComponent
+    DeleteCategoryModalComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +57,13 @@ import { ChangeCategoryComponent } from './components/changeCategory/changeCateg
     BrowserAnimationsModule,
     FormsModule,
     MatGridListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [],
+  entryComponents: [
+    DeleteCategoryModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

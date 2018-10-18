@@ -22,7 +22,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule, MatSortModule} from "@angular/material";
+import {
+  MatBadgeModule, MatDividerModule, MatPaginatorModule, MatSidenavModule, MatSortModule,
+  MatTabsModule
+} from "@angular/material";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
@@ -31,12 +34,15 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatIconModule} from '@angular/material/icon';
 import { ApprovedLotComponent } from './components/approved-lot/approved-lot.component';
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
-import { FormsModule , ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/deleteCategory.modal.component";
+import {MainComponent} from './components/main/main.component';
+import {CategoryComponent} from './components/category/category.component';
+import {MainContentComponent} from "./components/main-content/main-content.component";
 
 @NgModule({
-  declarations: [
+
+declarations: [
     AppComponent,
     ShowRolesComponent,
     DeleteModalComponent,

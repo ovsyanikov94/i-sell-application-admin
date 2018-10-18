@@ -10,7 +10,7 @@
           </mat-expansion-panel-header>
 
           <mat-form-field>
-            <input name="userRoleNew"[(ngModel)]="newRole" matInput placeholder="Название" [formControl]="roleFormControl">
+            <input name="nameRole"[(ngModel)]="newRole" matInput placeholder="Название" [formControl]="roleFormControl">
             <mat-error *ngIf="roleFormControl.hasError('pattern') && !roleFormControl.hasError('required')">
               Введите корректное название роли. Длина от 4 до 20 русских символов
             </mat-error>
@@ -37,18 +37,18 @@
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.roleID}} </td>
       </ng-container>
 
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let row; let i=index">
           <mat-form-field class="example-full-width col-12">
-            <input name="userRole" matInput value="{{row.title}}"  [formControl]="roleFormControl">
-              <mat-error *ngIf="roleFormControl.hasError('pattern') && !roleFormControl.hasError('required')">
+            <input name="nameRole" matInput [(ngModel)]="row.roleTitle"  [formControl]="formControls[i]">
+              <mat-error *ngIf="formControls[i].hasError('pattern') && !formControls[i].hasError('required')">
                 Введите корректное название роли. Длина от 4 до 20 русских символов
               </mat-error>
-            <mat-error *ngIf="roleFormControl.hasError('required')">
+            <mat-error *ngIf="formControls[i].hasError('required')">
               Название <strong>обязательно</strong>
             </mat-error>
           </mat-form-field>

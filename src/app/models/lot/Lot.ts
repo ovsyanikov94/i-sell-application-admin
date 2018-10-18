@@ -15,6 +15,13 @@ class MapCoord {
 }
 
 export class Lot {
+  get lotCategory(): Category {
+    return this._lotCategory;
+  }
+
+  set lotCategory(value: Category) {
+    this._lotCategory = value;
+  }
   get dateChecked(): Date {
     return this._dateChecked;
   }
@@ -94,13 +101,7 @@ export class Lot {
     this._lotDescription = value;
   }
 
-  get lotCategory(): string {
-    return this._lotCategory;
-  }
 
-  set lotCategory(value: string) {
-    this._lotCategory = value;
-  }
 
   get lotStartPrice(): number {
     return this._lotStartPrice;

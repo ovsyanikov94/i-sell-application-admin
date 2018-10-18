@@ -31,6 +31,9 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatIconModule} from '@angular/material/icon';
 import { ApprovedLotComponent } from './components/approved-lot/approved-lot.component';
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,11 @@ import { RejectLotComponent } from './components/reject-lot/reject-lot.component
     DeleteModalComponent,
     AdminProfileComponent,
     ApprovedLotComponent,
-    RejectLotComponent
+    RejectLotComponent,
+    MainComponent,
+    MainContentComponent,
+    CategoryComponent,
+    DeleteCategoryModalComponent
   ],
   imports: [
     BrowserModule,
@@ -61,11 +68,19 @@ import { RejectLotComponent } from './components/reject-lot/reject-lot.component
     MatListModule,
     MaterialFileInputModule,
     MatIconModule,
-    SliderModule
+    MatSidenavModule,
+    SliderModule,
+    MatBadgeModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [],
   entryComponents: [
-    DeleteModalComponent
+    DeleteModalComponent,
+    DeleteCategoryModalComponent
   ],
   bootstrap: [AppComponent]
 })

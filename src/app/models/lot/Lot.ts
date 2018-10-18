@@ -1,7 +1,7 @@
 'use strict';
 import {User} from '../../models/user/User';
 import { Comment } from '../comment/Comment';
-
+import {Category} from '../../models/category/Category';
 
 class MapCoord {
   lat: number;
@@ -166,7 +166,7 @@ export class Lot {
   private _lotName: string;
   private _lotFoto: string[];
   private _lotDescription: string;
-  private _lotCategory: string;
+  private _lotCategory: Category;
   private _lotStartPrice: number;
   private _lotMapPlase: MapCoord;
   private _lotCurrentPrice: number;
@@ -186,7 +186,7 @@ export class Lot {
     this._lotName = 'Наименование товара';
     this._lotFoto = ["/public/lot-images/dell1.jpg", "/public/lot-images/dell2.jpg", "/public/lot-images/dell3.jpg"];
     this._lotDescription = 'Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях. Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.';
-    this._lotCategory = 'Категория лота';
+    this._lotCategory = new Category(-1,'') ;
     this._lotStartPrice = 85.20;
     this._lotMapPlase = new MapCoord(0, 0);
     this._lotCurrentPrice = 100.54;

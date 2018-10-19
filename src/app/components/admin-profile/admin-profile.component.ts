@@ -24,10 +24,7 @@ export class AdminProfileComponent implements OnInit {
     Validators.required,
     Validators.pattern(/^[a-z а-я]{2,25}$/i),
   ]);
-  public loginFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern(/^[a-z]{4,20}$/i),
-  ]);
+
   public emailFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(/.+@.+\..+/i)
@@ -41,13 +38,15 @@ export class AdminProfileComponent implements OnInit {
 
   constructor() {
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 2; i++) {
       this.approvedLot.push(this.admin.approvedLot[i]);
       this.rejectedLot.push(this.admin.rejectedLot[i]);
     }//for
-  }
+
+  }//constructor
 
   ngOnInit(){
-  }
+
+  }//ngOnInit
 
 }

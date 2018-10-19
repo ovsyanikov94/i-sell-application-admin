@@ -1,4 +1,4 @@
-<div class="container-fluid col-10" style="margin-top: 20px">
+<div class="container-fluid col-12" style="margin-top: 20px">
 
   <div class="row justify-content-center">
 
@@ -53,17 +53,9 @@
               </div>
             </div>
 
-
-
             <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
-              <mat-form-field class="example-full-width col-lg-4 col-xl-4 col-md-8 col-sm-12" (click)="disabled=true" (mouseout)="disabled=true">
-                <input name="adminLogin" [attr.disabled]="disabled?'':null" matInput placeholder="Логин" [(ngModel)]="admin.adminLogin" [formControl]="loginFormControl">
-                <mat-error *ngIf="loginFormControl.hasError('pattern') && !loginFormControl.hasError('required')">
-                  Введите корректный логин. Длина от 4 до 20 латинских символов
-                </mat-error>
-                <mat-error *ngIf="loginFormControl.hasError('required')">
-                  Логин <strong>обязателен</strong>
-                </mat-error>
+              <mat-form-field class="example-full-width col-lg-4 col-xl-4 col-md-8 col-sm-12">
+                <input name="adminLogin" [readonly]="true" matInput placeholder="Логин" [(ngModel)]="admin.adminLogin">
               </mat-form-field>
 
               <mat-form-field class="example-full-width col-lg-4 col-xl-4 col-md-8 col-sm-12">
@@ -91,10 +83,10 @@
               <button mat-stroked-button color="primary">Сохранить личные данные</button>
             </div>
 
-            <a style="text-decoration: none; margin-top: 5px" routerLink="/approved-lot" class="text-left row"> <h3>Одобренные лоты</h3></a>
+            <a style="text-decoration: none; margin-top: 5px" target="_blank" routerLink="/main/approved-lot" class="text-left row"> <h3>Одобренные лоты</h3></a>
             <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
 
-              <div *ngFor="let lot of approvedLot" class="col-xl-2 col-lg-3  col-md-4 col-sm-12" style="margin-top: 10px" >
+              <div *ngFor="let lot of approvedLot" class="col-xl-3 col-lg-3  col-md-4 col-sm-12" style="margin-top: 10px" >
                 <mat-card class="example-card">
                   <mat-card-header >
                     <div class="row justify-content-center col-12">
@@ -114,9 +106,8 @@
 
                   <div class="row justify-content-center " style="margin-top: 10px">
                     <div class="justify-content-center col-12">  {{lot.lotName}}</div>
+                    <img mat-card-image  src="{{lot.lotFoto[0]}}" alt="Photo" style="margin-top: 20px; width: 50%; height: 50%">
                   </div>
-
-                  <img mat-card-image src="{{lot.lotFoto[0]}}" alt="Photo" style="margin-top: 20px">
                   <mat-card-content style="width: 100%">
 
                     <p>
@@ -132,10 +123,10 @@
 
             </div>
 
-            <a style="text-decoration: none" routerLink="/rejected-lot" class="text-left row"> <h3>Отклоненные лоты</h3></a>
+            <a style="text-decoration: none" routerLink="/main/rejected-lot" class="text-left row"> <h3>Отклоненные лоты</h3></a>
             <div class="row justify-content-center col-12" style="margin: 20px 0px 20px 0px">
 
-              <div *ngFor="let lot of rejectedLot" class="col-xl-2 col-lg-3  col-md-4 col-sm-12"  style="margin-top: 10px">
+              <div *ngFor="let lot of rejectedLot" class="col-xl-3 col-lg-3  col-md-4 col-sm-12"  style="margin-top: 10px">
                 <mat-card class="example-card">
                   <mat-card-header >
                     <div class="row justify-content-center col-12">
@@ -153,9 +144,10 @@
 
                   <div class="row justify-content-center " style="margin-top: 10px">
                     <div class="justify-content-center col-12">  {{lot.lotName}}</div>
+                    <img mat-card-image src="{{lot.lotFoto[0]}}" alt="Photo" style="width: 100px; height: 100px; ">
                   </div>
 
-                  <img mat-card-image src="{{lot.lotFoto[0]}}" alt="Photo" style="margin-top: 20px">
+
                   <mat-card-content style="width: 100%">
                     <p>
                       Дата отклонения

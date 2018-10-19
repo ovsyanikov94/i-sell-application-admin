@@ -22,25 +22,29 @@ const routes: Routes = [
         path: 'category',
         component: CategoryComponent
       },
-
+      {
+        path: 'roles',
+        component: ShowRolesComponent
+      },
+      {
+        path: 'profile',
+        component: AdminProfileComponent
+      },
+      {
+        path: 'profile/:login',
+        component: CategoryComponent
+      },
+      {
+        path: 'approved-lot',
+        component: ApprovedLotComponent
+      },
+      {
+        path: 'rejected-lot',
+        component: RejectLotComponent
+      }
     ]
   },
-  {
-    path: 'roles',
-    component: ShowRolesComponent
-  },
-  {
-    path: 'profile',
-    component: AdminProfileComponent
-  },
-  {
-    path: 'approved-lot',
-    component: ApprovedLotComponent
-  },
-  {
-    path: 'rejected-lot',
-    component: RejectLotComponent
-  }
+
 ];
 
 @NgModule({

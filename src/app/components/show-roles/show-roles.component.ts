@@ -1,10 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { FormControl , Validators } from '@angular/forms';
-import {DeleteModalComponent} from '../../modals/delete.modal/delete.modal.component';
+//import {DeleteModalComponent} from '../../modals/delete.modal/delete.modal.component';
+import {DeleteRoleComponent} from '../../modals/delete-role/delete-role.component';
 
 import { MatDialog } from '@angular/material';
 import { DeleteData} from '../../models/modal.data/delete.data';
+import { CategoryData } from '../../models/modal.category/category.data';
 import { Role } from '../../models/role/Role';
 
 @Component({
@@ -66,26 +68,20 @@ export class ShowRolesComponent implements OnInit {
 
   deleteModal(event, row){
 
-    const deleteData: DeleteData = new class implements DeleteData {
-      message: string;
-    };
-    deleteData.message = `Вы уверены что хотите удалить роль ${row.roleTitle}?`;
+    this.openDialog({
+        categoryTitle : `Вы уверены что хотите удалить роль ${row.roleTitle}?`,
+        categoryID: -1
+    });
 
+  }//deleteModal
 
-    if ( event instanceof KeyboardEvent && event.code === "Enter" ){
-      this.openDialog(deleteData);
-    }//if
-    else if ( event instanceof  MouseEvent){
-      this.openDialog(deleteData);
-    }//else if
+  openDialog( catData: CategoryData ): void {
 
-  }
+    console.log(catData);
 
-  openDialog( deleteData: DeleteData ): void {
-
-    const dialogRef = this.dialog.open(DeleteModalComponent, {
+    const dialogRef = this.dialog.open(DeleteRoleComponent, {
       width: '400px',
-      data: deleteData
+      data: catData
     });
 
   }//openDialog

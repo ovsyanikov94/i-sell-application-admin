@@ -10,7 +10,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 //MY COMPONENTS
 import { ShowRolesComponent } from './components/show-roles/show-roles.component';
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
-import { DeleteRoleComponent } from './modals/delete-role/delete-role.component';
+import { DeleteRoleModalComponent } from './modals/delete-role-modal/delete-role-modal.component';
 
 //SLIDER
 import { SliderModule } from 'angular-image-slider';
@@ -41,6 +41,7 @@ import {CategoryComponent} from './components/category/category.component';
 import {MainContentComponent} from "./components/main-content/main-content.component";
 
 
+
 @NgModule({
 
 declarations: [
@@ -53,7 +54,7 @@ declarations: [
     MainContentComponent,
     CategoryComponent,
     DeleteCategoryModalComponent,
-    DeleteRoleComponent
+    DeleteRoleModalComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +89,7 @@ declarations: [
   providers: [],
   entryComponents: [
     DeleteCategoryModalComponent,
-    DeleteRoleComponent
+    DeleteRoleModalComponent
   ],
   bootstrap: [AppComponent]
 })

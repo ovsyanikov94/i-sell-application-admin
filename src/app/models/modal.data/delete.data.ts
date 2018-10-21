@@ -2,6 +2,8 @@
 
 export interface DeleteData {
 
-  message: string;
+  roleTitle: string;
+  roleID: number;
+
 
 }

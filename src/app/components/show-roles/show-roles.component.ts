@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { FormControl , Validators } from '@angular/forms';
-//import {DeleteModalComponent} from '../../modals/delete.modal/delete.modal.component';
-import {DeleteRoleComponent} from '../../modals/delete-role/delete-role.component';
+import { DeleteRoleModalComponent } from '../../modals/delete-role-modal/delete-role-modal.component';
+
 
 import { MatDialog } from '@angular/material';
 import { DeleteData} from '../../models/modal.data/delete.data';
@@ -69,19 +69,19 @@ export class ShowRolesComponent implements OnInit {
   deleteModal(event, row){
 
     this.openDialog({
-        categoryTitle : `Вы уверены что хотите удалить роль ${row.roleTitle}?`,
-        categoryID: -1
+        roleTitle : `${row.roleTitle}`,
+        roleID: row.roleID
     });
 
   }//deleteModal
 
-  openDialog( catData: CategoryData ): void {
+  openDialog( deleteData: DeleteData ): void {
 
-    console.log(catData);
+    console.log(deleteData);
 
-    const dialogRef = this.dialog.open(DeleteRoleComponent, {
+    const dialogRef = this.dialog.open(DeleteRoleModalComponent, {
       width: '400px',
-      data: catData
+      data: deleteData
     });
 
   }//openDialog

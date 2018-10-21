@@ -103,13 +103,17 @@ export class Admin{
     this._adminPhone = "435355436"
     this._adminPhoto = "https://www.meme-arsenal.com/memes/b3520d14f31986f0c13c9e47f76f8331.jpg";
 
-    const lot: Lot = new Lot();
+   // const lot: Lot = new Lot();
 
     for ( let i = 0 ; i < 10 ; i++ ){
+      const lot: Lot = new Lot();
+      lot.lotName+= i;
       this._approvedLot.push(lot);
     }//for
 
     for ( let i = 0 ; i < 8 ; i++ ){
+      const lot: Lot = new Lot();
+      lot.lotName+= i;
       this._rejectedLot.push(lot);
     }//for
 

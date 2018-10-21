@@ -38,7 +38,7 @@ export class AdminProfileComponent implements OnInit {
 
   constructor() {
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 4; i++) {
       this.approvedLot.push(this.admin.approvedLot[i]);
       this.rejectedLot.push(this.admin.rejectedLot[i]);
     }//for

@@ -4,9 +4,6 @@ import 'hammerjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
-
-
 // ANGULAR MATERIAL
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -16,20 +13,22 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 
-
 //COMPONENTS
 import { SingleLotComponent } from './components/single-lot/single-lot.component';
 import { RejectModalComponent } from './modals/reject-modal/reject-modal.component';
+import { LotsListComponent } from './components/lots-list/lots-list.component';
+import { LotsListTableComponent } from './components/lots-list-table/lots-list-table.component';
 
 //ANGULAR IMAGE SLIDER
 import { SliderModule } from 'angular-image-slider';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     SingleLotComponent,
-    RejectModalComponent
+    RejectModalComponent,
+    LotsListComponent,
+    LotsListTableComponent
   ],
   imports: [
     BrowserModule,

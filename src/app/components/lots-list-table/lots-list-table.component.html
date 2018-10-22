@@ -1,9 +1,9 @@
 <div class="mat-elevation-z8">
   <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
     <!-- Id Column -->
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="LotName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      <td mat-cell *matCellDef="let row">{{row.lotName}}</td>
     </ng-container>
 
     <!-- Name Column -->

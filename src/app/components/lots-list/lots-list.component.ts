@@ -12,7 +12,7 @@ export class LotsListComponent implements OnInit {
 
   public lots: Lot[];
 
-  lotsData: MatTableDataSource<any>;
+  lotsData: MatTableDataSource<Lot>;
   tableColumns: string[] = ['lotName', 'lotSeller', 'lotCategory', 'lotStartPrice', 'lotSendDate', 'lotStartDate', ];
 
   constructor() {

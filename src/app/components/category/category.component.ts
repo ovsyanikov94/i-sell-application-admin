@@ -26,6 +26,7 @@ export class CategoryComponent implements OnInit {
   public visib: boolean;
 
   public formControls: FormControl[] = [];
+
   public categoryNameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(/^[a-z,а-я,0-9, ]{2,20}$/i),

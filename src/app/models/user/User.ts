@@ -1,6 +1,13 @@
 'use strict';
 
 export class User {
+  get userRole(): number {
+    return this._userRole;
+  }
+
+  set userRole(value: number) {
+    this._userRole = value;
+  }
   get userOldPassword(): string {
     return this._userOldPassword;
   }
@@ -64,8 +71,6 @@ export class User {
   }
 
 
-
-
   private _userLogin: string;
   private _userPassword: string;
   private _userOldPassword: string;
@@ -76,6 +81,7 @@ export class User {
   private _userPhone: string;
   private _userPhoto: string;
   private _userCountSum: number;
+  private _userRole: number;
 
   get userPassword(): string {
     return this._userPassword;
@@ -95,7 +101,7 @@ export class User {
 
   constructor(){
 
-    this._userLogin = 'Login 1';
+    this._userLogin = 'Login1';
     this._userPassword = '';
     this._userConfirmPassword = '';
     this._userEmail = '';

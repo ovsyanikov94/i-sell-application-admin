@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'profile/:login',
-        component: CategoryComponent
+        component: PersonalDataComponent
       },
       {
         path: 'approved-lot',
@@ -43,10 +43,6 @@ const routes: Routes = [
       {
         path: 'rejected-lot',
         component: RejectLotComponent
-      },
-      {
-        path: 'personal-data',
-        component: PersonalDataComponent
       },
       {
         path: 'user-list',

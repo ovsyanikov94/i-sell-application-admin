@@ -39,6 +39,10 @@ import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/delete
 import {MainComponent} from './components/main/main.component';
 import {CategoryComponent} from './components/category/category.component';
 import {MainContentComponent} from "./components/main-content/main-content.component";
+import { PersonalDataComponent } from "./components/personal-data/personal-data.component";
+import { UserListComponent } from "./components/user-list/user-list.component";
+import { SingleLotComponent } from "./components/single-lot/single-lot.component";
+import { SingleUserComponent } from "./components/single-user/single-user.component";
 
 
 
@@ -54,7 +58,11 @@ declarations: [
     MainContentComponent,
     CategoryComponent,
     DeleteCategoryModalComponent,
-    DeleteRoleModalComponent
+    DeleteRoleModalComponent,
+    PersonalDataComponent,
+    UserListComponent,
+    SingleLotComponent,
+    SingleUserComponent
   ],
   imports: [
     BrowserModule,

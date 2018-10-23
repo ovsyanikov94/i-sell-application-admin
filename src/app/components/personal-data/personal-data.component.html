@@ -1,25 +1,8 @@
- <div class="row justify-content-start">
-    <!--<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12" >
-      <mat-card style="padding: 12px">
-
-          <mat-list>
-            <img  mat-list-avatar src="{{user?.userPhoto}}" alt="Desc 1" style="width: 150px; height: 150px">
-
-            <h3 mat-subheader>Имя</h3>
-            <mat-list-item>{{user?.userName}}</mat-list-item>
-            <mat-divider></mat-divider>
-            <h3 mat-subheader>Фамилия</h3>
-            <mat-list-item>{{user?.userLastname}}</mat-list-item>
-            <mat-divider></mat-divider>
-            <h3 mat-subheader>Логин</h3>
-            <mat-list-item>{{user?.userLogin}}</mat-list-item>
-          </mat-list>
+<div class="container">
 
 
-      </mat-card>
-    </div>-->
- <!--  <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12" >-->
-    <div class="col-12" >
+  <div class="row justify-content-center">
+    <div class="col-10" >
       <mat-tab-group>
         <mat-tab label="Подробная информация">
           <div class="justify-content-center container-fluid" style="width: 65%;">
@@ -172,36 +155,36 @@
                          (page)="pageEvent = $event">
           </mat-paginator>
           <div style="background: #fff2e6">
-          <div style="width: 30%;" class="displayBlock">
-            <mat-list>
-              <h6 mat-subheader>{{user.userName}} {{user.userLastname}}</h6>
-              <mat-list-item>{{user?.userLogin}}</mat-list-item>
-            </mat-list>
-          </div>
-          <div class="displayBlock" style="width: 40%">
-
+            <div style="width: 30%;" class="displayBlock">
+              <mat-list>
+                <h6 mat-subheader>{{user.userName}} {{user.userLastname}}</h6>
+                <mat-list-item>{{user?.userLogin}}</mat-list-item>
+              </mat-list>
+            </div>
             <div class="displayBlock" style="width: 40%">
-              <i class="material-icons">
-                fast_forward
-              </i>
-              <div style="color: red">
-                1200
-              </div>
 
-            </div>
-            <div class="displayBlock" style="width: 60%">
-              <div>
-                дата 20.11.2018
+              <div class="displayBlock" style="width: 40%">
+                <i class="material-icons">
+                  fast_forward
+                </i>
+                <div style="color: red">
+                  1200
+                </div>
+
+              </div>
+              <div class="displayBlock" style="width: 60%">
+                <div>
+                  дата 20.11.2018
+                </div>
               </div>
             </div>
+            <div class="displayBlock" style="width: 30%" >
+              <mat-list>
+                <h6 mat-subheader>{{user.userName}} {{user.userLastname}}</h6>
+                <mat-list-item>{{user?.userLogin}}</mat-list-item>
+              </mat-list>
+            </div>
           </div>
-          <div class="displayBlock" style="width: 30%" >
-            <mat-list>
-              <h6 mat-subheader>{{user.userName}} {{user.userLastname}}</h6>
-              <mat-list-item>{{user?.userLogin}}</mat-list-item>
-            </mat-list>
-          </div>
-        </div>
           <mat-divider></mat-divider>
           <div style="background:  #e6ffe6">
             <div style="width: 30%;" class="displayBlock">
@@ -443,3 +426,6 @@
     </div>
   </div>
 
+
+
+</div>

@@ -5,54 +5,27 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 import {Lot} from '../../models/lot/Lot';
 
-// TODO: Replace this with your own data model type
-export interface LotsListTableItem {
-
-  lotName: string;
-  lotSeller: string;
-  lotCategory: string;
-  lotStartPrice: number;
-  lotSendDate: Date;
-  lotStartDate: Date;
-
-}//interface LotsListTableItem
-
-
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: LotsListTableItem[] = this.lots;
-
 /**
  * Data source for the LotsListTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class LotsListTableDataSource extends DataSource<LotsListTableItem> {
-  data: LotsListTableItem[] = EXAMPLE_DATA;
+export class LotsListTableDataSource extends DataSource<Lot> {
 
-  public lots: Lot[];
+  public lots: Lot[] = [];
 
   constructor(private paginator: MatPaginator, private sort: MatSort) {
+
     super();
 
-    this.lots = [
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-      new Lot(),
-    ];
+    for ( let i = 0 ; i < 10 ; i++ ){
+
+      const lot: Lot = new Lot();
+
+      lot.lotName += ` ${i}`;
+      this.lots.push(lot);
+
+    }//for i
 
   }//LotsListTableDataSource
 
@@ -61,21 +34,22 @@ export class LotsListTableDataSource extends DataSource<LotsListTableItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<LotsListTableItem[]> {
+  connect(): Observable<Lot[]> {
+
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
-      observableOf(this.data),
+      observableOf(this.lots),
       this.paginator.page,
       this.sort.sortChange
 
     ];
 
     // Set the paginators length
-    this.paginator.length = this.data.length;
+    this.paginator.length = this.lots.length;
 
     return merge(...dataMutations).pipe(map(() => {
-      return this.getPagedData(this.getSortedData([...this.data]));
+      return this.getPagedData(this.getSortedData([...this.lots]));
     }));
   }
 
@@ -89,7 +63,7 @@ export class LotsListTableDataSource extends DataSource<LotsListTableItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: LotsListTableItem[]) {
+  private getPagedData(data: Lot[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }//getPagedData
@@ -98,7 +72,7 @@ export class LotsListTableDataSource extends DataSource<LotsListTableItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: LotsListTableItem[]) {
+  private getSortedData(data: Lot[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }//getSortedData

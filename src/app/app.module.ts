@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 // ANGULAR MATERIAL
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatSortModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 //COMPONENTS
 import { SingleLotComponent } from './components/single-lot/single-lot.component';
@@ -41,6 +43,9 @@ import { SliderModule } from 'angular-image-slider';
     MatListModule,
     SliderModule,
     MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],

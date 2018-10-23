@@ -15,6 +15,27 @@ class MapCoord {
 }
 
 export class Lot {
+  get lotCategory(): Category {
+    return this._lotCategory;
+  }
+
+  set lotCategory(value: Category) {
+    this._lotCategory = value;
+  }
+  get dateChecked(): Date {
+    return this._dateChecked;
+  }
+
+  set dateChecked(value: Date) {
+    this._dateChecked = value;
+  }
+  get checkedLot(): boolean {
+    return this._checkedLot;
+  }
+
+  set checkedLot(value: boolean) {
+    this._checkedLot = value;
+  }
 
   get comments(): Comment[] {
     return this._comments;
@@ -47,6 +68,7 @@ export class Lot {
   set lotBuyer(value: User) {
     this._lotBuyer = value;
   }
+
   get lotSeller(): User {
     return this._lotSeller;
   }
@@ -54,6 +76,7 @@ export class Lot {
   set lotSeller(value: User) {
     this._lotSeller = value;
   }
+
   get lotName(): string {
     return this._lotName;
   }
@@ -61,6 +84,7 @@ export class Lot {
   set lotName(value: string) {
     this._lotName = value;
   }
+
   get lotFoto(): string[] {
     return this._lotFoto;
   }
@@ -68,6 +92,7 @@ export class Lot {
   set lotFoto(value: string[]) {
     this._lotFoto = value;
   }
+
   get lotDescription(): string {
     return this._lotDescription;
   }
@@ -75,20 +100,18 @@ export class Lot {
   set lotDescription(value: string) {
     this._lotDescription = value;
   }
-  get lotCategory(): Category {
-    return this._lotCategory;
-  }
 
-  set lotCategory(value: Category) {
-    this._lotCategory = value;
-  }
+
+
   get lotStartPrice(): number {
     return this._lotStartPrice;
   }
 
+
   set lotStartPrice(value: number) {
     this._lotStartPrice = value;
   }
+
   get lotMapPlase(): MapCoord {
     return this._lotMapPlase;
   }
@@ -96,6 +119,7 @@ export class Lot {
   set lotMapPlase(value: MapCoord) {
     this._lotMapPlase = value;
   }
+
   get lotCurrentPrice(): number {
     return this._lotCurrentPrice;
   }
@@ -103,6 +127,7 @@ export class Lot {
   set lotCurrentPrice(value: number) {
     this._lotCurrentPrice = value;
   }
+
   get lotAdminAnswerDate(): Date {
     return this._lotAdminAnswerDate;
   }
@@ -127,6 +152,13 @@ export class Lot {
     this._lotStartDate = value;
   }
 
+  get lotEndDate(): Date {
+    return this._lotEndDate;
+  }
+
+  set lotEndDate(value: Date) {
+    this._lotEndDate = value;
+  }
 
   private _lotStatus: string;
   private _lotType: string;
@@ -142,8 +174,10 @@ export class Lot {
   private _lotAdminAnswerDate: Date;
   private _lotSendDate: Date;
   private _lotStartDate: Date;
+  private _lotEndDate: Date;
   private _comments: Comment[] = [];
-
+  private _dateChecked: Date;
+  private _checkedLot: boolean;
 
   constructor(){
     this._lotStatus = 'статус лота';
@@ -160,6 +194,8 @@ export class Lot {
     this._lotAdminAnswerDate = new Date();
     this._lotSendDate = new Date();
     this._lotStartDate = new Date();
+    this._lotEndDate = new Date();
+    this._dateChecked = new Date();
 
     const comment: Comment = new Comment();
 

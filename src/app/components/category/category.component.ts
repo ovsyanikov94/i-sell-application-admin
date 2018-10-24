@@ -25,11 +25,12 @@ export class CategoryComponent implements OnInit {
   public cat: Category = new Category(-1, '');
   public visib: boolean;
 
+  public formControls: FormControl[] = [];
+
   public categoryNameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(/^[a-z,а-я,0-9, ]{2,20}$/i),
   ]);
-
 
   constructor(public dialog: MatDialog) {
 
@@ -54,34 +55,32 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-  }
+  }// ngOnInit
 
-  addForm(){
+  addForm() {
     this.cat.categoryTitle = '';
     this.visib = !this.visib;
   }
 
-  addCategory(event){
+  addCategory(event) {
 
-    if ( this.categoryNameFormControl.hasError('required') || this.categoryNameFormControl.hasError('pattern')){
+    if ( this.categoryNameFormControl.hasError('required') || this.categoryNameFormControl.hasError('pattern')) {
       return;
     }
 
-    if ( this.categoryNameFormControl.hasError('required') ){
+    if ( this.categoryNameFormControl.hasError('required') ) {
       return;
     }
 
-    if ( event instanceof KeyboardEvent && event.code === 'Enter' ){
+    if ( event instanceof KeyboardEvent && event.code === 'Enter' ) {
+      this.visib = false;
+    } else if ( event instanceof  MouseEvent) {
       this.visib = false;
     }
-    else if ( event instanceof  MouseEvent){
-      this.visib = false;
-    }
-
-
 
 
   }

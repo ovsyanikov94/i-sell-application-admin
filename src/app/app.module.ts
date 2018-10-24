@@ -7,30 +7,33 @@ import { AppComponent } from './app.component';
 // ANGULAR MATERIAL
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatSortModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatSortModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 //COMPONENTS
 import { SingleLotComponent } from './components/single-lot/single-lot.component';
 import { RejectModalComponent } from './modals/reject-modal/reject-modal.component';
-import { LotsListComponent } from './components/lots-list/lots-list.component';
+
 import { LotsListTableComponent } from './components/lots-list-table/lots-list-table.component';
 
 //ANGULAR IMAGE SLIDER
 import { SliderModule } from 'angular-image-slider';
+import { LotNotificationComponent } from './components/lot-notification/lot-notification.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SingleLotComponent,
     RejectModalComponent,
-    LotsListComponent,
-    LotsListTableComponent
+    LotsListTableComponent,
+    LotNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,10 @@ import { SliderModule } from 'angular-image-slider';
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

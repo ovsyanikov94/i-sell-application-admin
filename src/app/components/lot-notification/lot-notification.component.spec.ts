@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LotsListComponent } from './lots-list.component';
+import { LotNotificationComponent } from './lot-notification.component';
 
-describe('LotsListComponent', () => {
-  let component: LotsListComponent;
-  let fixture: ComponentFixture<LotsListComponent>;
+describe('LotNotificationComponent', () => {
+  let component: LotNotificationComponent;
+  let fixture: ComponentFixture<LotNotificationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LotsListComponent ]
+      declarations: [ LotNotificationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LotsListComponent);
+    fixture = TestBed.createComponent(LotNotificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

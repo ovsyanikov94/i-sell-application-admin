@@ -14,11 +14,12 @@ export class LotsListTableDataSource extends DataSource<Lot> {
 
   public lots: Lot[] = [];
 
+
   constructor(private paginator: MatPaginator, private sort: MatSort) {
 
     super();
 
-    for ( let i = 0 ; i < 10 ; i++ ){
+    for ( let i = 0 ; i < 50 ; i++ ){
 
       const lot: Lot = new Lot();
 
@@ -86,9 +87,14 @@ export class LotsListTableDataSource extends DataSource<Lot> {
       }
     });
   }//getSortedData
+
+
+
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }//compare
+
+

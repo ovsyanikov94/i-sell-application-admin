@@ -39,48 +39,48 @@
   <div class="row justify-content-start" style="margin-left: 1%">
     <h4>Категории</h4>
   </div>
-  <!-- Checkbox Column -->
-  <div class="mat-elevation-z8 ">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Checkbox Column -->
+    <div class="mat-elevation-z8 ">
+      <table mat-table [dataSource]="dataSource" matSort>
 
-      <ng-container  matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell name="idCategory" *matCellDef="let row"> {{row.categoryID}} </td>
-      </ng-container>
+        <ng-container  matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell name="idCategory" *matCellDef="let row"> {{row.categoryID}} </td>
+        </ng-container>
 
-      <ng-container name="nameCategory" matColumnDef="title" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
-        <td mat-cell *matCellDef="let row; let i = index">
-          <mat-form-field class="col-10 example-full-width">
-            <input name="nameCategory" matInput placeholder="Введите название категории" [(ngModel)]="row.categoryTitle" [formControl]="formControls[i]">
-            <mat-error *ngIf="formControls[i].hasError('pattern') && !formControls[i].hasError('required')">
-              Введите корректное название категории
-            </mat-error>
-            <mat-error *ngIf="formControls[i].hasError('required')">
-              Название категории <strong>не должно быть пустым</strong>
-            </mat-error>
-          </mat-form-field>
+        <ng-container name="nameCategory" matColumnDef="title" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
+          <td mat-cell *matCellDef="let row; let i = index">
+            <mat-form-field class="col-10 example-full-width">
+              <input name="nameCategory" matInput placeholder="Введите название категории" [(ngModel)]="row.categoryTitle" [formControl]="formControls[i]">
+              <mat-error *ngIf="formControls[i].hasError('pattern') && !formControls[i].hasError('required')">
+                Введите корректное название категории
+              </mat-error>
+              <mat-error *ngIf="formControls[i].hasError('required')">
+                Название категории <strong>не должно быть пустым</strong>
+              </mat-error>
+            </mat-form-field>
 
-        </td>
-      </ng-container>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="update">
-        <th mat-header-cell *matHeaderCellDef > Изменить </th>
-        <td mat-cell *matCellDef="let row"><button mat-raised-button color="primary" style="font-size: 0.8em">Изменить</button></td>
-      </ng-container>
+        <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef > Изменить </th>
+          <td mat-cell *matCellDef="let row"><button mat-raised-button color="primary" style="font-size: 0.8em">Изменить</button></td>
+        </ng-container>
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef > Удалить </th>
         <td mat-cell *matCellDef="let row"><button (click)="delete($event , row)" mat-raised-button color="warn" style="font-size: 0.8em">Удалить</button></td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
 
 
-      </tr>
-    </table>
-  </div>
+        </tr>
+      </table>
+    </div>
 
 
 </div>

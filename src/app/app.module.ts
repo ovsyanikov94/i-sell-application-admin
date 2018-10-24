@@ -11,6 +11,8 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { ShowRolesComponent } from './components/show-roles/show-roles.component';
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { DeleteRoleModalComponent } from './modals/delete-role-modal/delete-role-modal.component';
+import { AddModeratorComponent } from './components/add-moderator/add-moderator.component';
+import { MessageModalComponent } from './modals/message-modal/message-modal.component';
 
 //SLIDER
 import { SliderModule } from 'angular-image-slider';
@@ -46,6 +48,7 @@ import { SingleUserComponent } from "./components/single-user/single-user.compon
 
 
 
+
 @NgModule({
 
 declarations: [
@@ -62,7 +65,9 @@ declarations: [
     PersonalDataComponent,
     UserListComponent,
     SingleLotComponent,
-    SingleUserComponent
+    SingleUserComponent,
+    AddModeratorComponent,
+    MessageModalComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +102,8 @@ declarations: [
   providers: [],
   entryComponents: [
     DeleteCategoryModalComponent,
-    DeleteRoleModalComponent
+    DeleteRoleModalComponent,
+    MessageModalComponent
   ],
   bootstrap: [AppComponent]
 })

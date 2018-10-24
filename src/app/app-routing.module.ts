@@ -10,6 +10,7 @@ import { ApprovedLotComponent } from './components/approved-lot/approved-lot.com
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
 import {PersonalDataComponent} from './components/personal-data/personal-data.component'
 import {UserListComponent} from './components/user-list/user-list.component';
+import {AddModeratorComponent} from "./components/add-moderator/add-moderator.component";
 
 const routes: Routes = [
   {
@@ -48,9 +49,17 @@ const routes: Routes = [
         path: 'user-list',
         component: UserListComponent
       },
+      {
+        path: 'add-moderator',
+        component: AddModeratorComponent
+      }
     ]
   },
 
+  {
+    path: "**",
+    component: MainComponent
+  }
 ];
 
 @NgModule({

@@ -11,7 +11,8 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { ShowRolesComponent } from './components/show-roles/show-roles.component';
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { DeleteRoleModalComponent } from './modals/delete-role-modal/delete-role-modal.component';
-
+import { LotComponent } from './components/lot/lot.component';
+import { CommentComponent } from './components/comment/comment.component';
 //SLIDER
 import { SliderModule } from 'angular-image-slider';
 
@@ -44,6 +45,9 @@ import { UserListComponent } from "./components/user-list/user-list.component";
 import { SingleLotComponent } from "./components/single-lot/single-lot.component";
 import { SingleUserComponent } from "./components/single-user/single-user.component";
 
+//FILTERS
+import {FilterLengthPipe} from './filters/myfilter';
+
 
 
 @NgModule({
@@ -62,7 +66,10 @@ declarations: [
     PersonalDataComponent,
     UserListComponent,
     SingleLotComponent,
-    SingleUserComponent
+    SingleUserComponent,
+    LotComponent,
+    CommentComponent,
+    FilterLengthPipe
   ],
   imports: [
     BrowserModule,

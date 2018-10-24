@@ -10,6 +10,7 @@ import { ApprovedLotComponent } from './components/approved-lot/approved-lot.com
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
 import {PersonalDataComponent} from './components/personal-data/personal-data.component'
 import {UserListComponent} from './components/user-list/user-list.component';
+import { LotComponent } from './components/lot/lot.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'user-list',
         component: UserListComponent
+      },
+      {
+        path: 'lot',
+        component: LotComponent
       },
     ]
   },

@@ -8,8 +8,10 @@ import { ShowRolesComponent } from './components/show-roles/show-roles.component
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { ApprovedLotComponent } from './components/approved-lot/approved-lot.component';
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
-import {PersonalDataComponent} from './components/personal-data/personal-data.component'
+import {PersonalDataComponent} from './components/personal-data/personal-data.component';
 import {UserListComponent} from './components/user-list/user-list.component';
+import {DialogListComponent} from './components/dialog-list/dialog-list.component';
+import {MyDialogComponent} from './components/my-dialog/my-dialog.component';
 
 const routes: Routes = [
   {
@@ -48,6 +50,14 @@ const routes: Routes = [
         path: 'user-list',
         component: UserListComponent
       },
+      {
+        path:'list-dialog',
+        component: DialogListComponent
+      },
+      {
+        path:'my-dialog/:userLogin',
+        component: MyDialogComponent
+      }
     ]
   },
 

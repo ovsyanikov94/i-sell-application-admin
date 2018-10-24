@@ -43,6 +43,8 @@ import { PersonalDataComponent } from "./components/personal-data/personal-data.
 import { UserListComponent } from "./components/user-list/user-list.component";
 import { SingleLotComponent } from "./components/single-lot/single-lot.component";
 import { SingleUserComponent } from "./components/single-user/single-user.component";
+import { DialogListComponent } from './components/dialog-list/dialog-list.component';
+import { MyDialogComponent } from './components/my-dialog/my-dialog.component';
 
 
 
@@ -62,7 +64,9 @@ declarations: [
     PersonalDataComponent,
     UserListComponent,
     SingleLotComponent,
-    SingleUserComponent
+    SingleUserComponent,
+    DialogListComponent,
+    MyDialogComponent
   ],
   imports: [
     BrowserModule,

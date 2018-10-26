@@ -1,7 +1,7 @@
 'use strict';
 import {User} from '../../models/user/User';
-//import { Comment } from '../comment/Comment';
-
+import { Comment } from '../comment/Comment';
+import {Category} from '../../models/category/Category';
 
 class MapCoord {
   lat: number;
@@ -15,6 +15,27 @@ class MapCoord {
 }
 
 export class Lot {
+  get lotCategory(): Category {
+    return this._lotCategory;
+  }
+
+  set lotCategory(value: Category) {
+    this._lotCategory = value;
+  }
+  get dateChecked(): Date {
+    return this._dateChecked;
+  }
+
+  set dateChecked(value: Date) {
+    this._dateChecked = value;
+  }
+  get checkedLot(): boolean {
+    return this._checkedLot;
+  }
+
+  set checkedLot(value: boolean) {
+    this._checkedLot = value;
+  }
 
   get comments(): Comment[] {
     return this._comments;
@@ -47,6 +68,7 @@ export class Lot {
   set lotBuyer(value: User) {
     this._lotBuyer = value;
   }
+
   get lotSeller(): User {
     return this._lotSeller;
   }
@@ -54,6 +76,7 @@ export class Lot {
   set lotSeller(value: User) {
     this._lotSeller = value;
   }
+
   get lotName(): string {
     return this._lotName;
   }
@@ -61,6 +84,7 @@ export class Lot {
   set lotName(value: string) {
     this._lotName = value;
   }
+
   get lotFoto(): string[] {
     return this._lotFoto;
   }
@@ -68,6 +92,7 @@ export class Lot {
   set lotFoto(value: string[]) {
     this._lotFoto = value;
   }
+
   get lotDescription(): string {
     return this._lotDescription;
   }
@@ -75,20 +100,18 @@ export class Lot {
   set lotDescription(value: string) {
     this._lotDescription = value;
   }
-  get lotCategory(): string {
-    return this._lotCategory;
-  }
 
-  set lotCategory(value: string) {
-    this._lotCategory = value;
-  }
+
+
   get lotStartPrice(): number {
     return this._lotStartPrice;
   }
 
+
   set lotStartPrice(value: number) {
     this._lotStartPrice = value;
   }
+
   get lotMapPlase(): MapCoord {
     return this._lotMapPlase;
   }
@@ -96,6 +119,7 @@ export class Lot {
   set lotMapPlase(value: MapCoord) {
     this._lotMapPlase = value;
   }
+
   get lotCurrentPrice(): number {
     return this._lotCurrentPrice;
   }
@@ -103,6 +127,7 @@ export class Lot {
   set lotCurrentPrice(value: number) {
     this._lotCurrentPrice = value;
   }
+
   get lotAdminAnswerDate(): Date {
     return this._lotAdminAnswerDate;
   }
@@ -127,6 +152,13 @@ export class Lot {
     this._lotStartDate = value;
   }
 
+  get lotEndDate(): Date {
+    return this._lotEndDate;
+  }
+
+  set lotEndDate(value: Date) {
+    this._lotEndDate = value;
+  }
 
   private _lotStatus: string;
   private _lotType: string;
@@ -135,15 +167,17 @@ export class Lot {
   private _lotName: string;
   private _lotFoto: string[];
   private _lotDescription: string;
-  private _lotCategory: string;
+  private _lotCategory: Category;
   private _lotStartPrice: number;
   private _lotMapPlase: MapCoord;
   private _lotCurrentPrice: number;
   private _lotAdminAnswerDate: Date;
   private _lotSendDate: Date;
   private _lotStartDate: Date;
+  private _lotEndDate: Date;
   private _comments: Comment[] = [];
-
+  private _dateChecked: Date;
+  private _checkedLot: boolean;
 
   constructor(){
     this._lotStatus = 'статус лота';
@@ -153,26 +187,28 @@ export class Lot {
     this._lotName = 'Наименование товара';
     this._lotFoto = ["/public/lot-images/dell1.jpg", "/public/lot-images/dell2.jpg", "/public/lot-images/dell3.jpg"];
     this._lotDescription = 'Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях. Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.';
-    this._lotCategory = 'Категория лота';
+    this._lotCategory = new Category(-1,'') ;
     this._lotStartPrice = 85.20;
     this._lotMapPlase = new MapCoord(0, 0);
     this._lotCurrentPrice = 100.54;
     this._lotAdminAnswerDate = new Date();
     this._lotSendDate = new Date();
     this._lotStartDate = new Date();
+    this._lotEndDate = new Date();
+    this._dateChecked = new Date();
 
-    // const comment: Comment = new Comment();
-    //
-    // comment.commentSendDate = '2018-10-10 17:00';
-    // comment.commentStatus = 1;
-    // comment.commentType = 1;
-    // comment.commentText = 'Просто комментарий';
-    // comment.userSender = new User();
-    // comment.userReceiver = this;
+    const comment: Comment = new Comment();
 
-    // for ( let i = 0 ; i < 10 ; i++ ){
-    //   this._comments.push(comment);
-    // }//for
+    comment.commentSendDate = '2018-10-10 17:00';
+    comment.commentStatus = 1;
+    comment.commentType = 1;
+    comment.commentText = 'Lorem ipsum dolor sist amet, consectetur adipisicing elit. Delectus dolore earum eveniet necessitatibus officiis omnis, perspiciatis placeat quaerat vel voluptatem. Aliquam molestiae nemo nostrum placeat quam saepe similique sint voluptatum! Lorem ipsum dolor sist amet, consectetur adipisicing elit. Delectus dolore earum eveniet necessitatibus officiis omnis, perspiciatis placeat quaerat vel voluptatem. Aliquam molestiae nemo nostrum placeat quam saepe similique sint voluptatum!';
+    comment.userSender = new User();
+    comment.userReceiver = this;
+
+    for ( let i = 0 ; i < 10 ; i++ ){
+      this._comments.push(comment);
+    }//for
 
   }//constructor
 

@@ -1,13 +1,16 @@
 'use strict';
 
+import {Role} from "../role/Role"
+
 export class User {
-  get userRole(): number {
+  get userRole(): Role {
     return this._userRole;
   }
 
-  set userRole(value: number) {
+  set userRole(value: Role) {
     this._userRole = value;
   }
+
   get userOldPassword(): string {
     return this._userOldPassword;
   }
@@ -81,7 +84,7 @@ export class User {
   private _userPhone: string;
   private _userPhoto: string;
   private _userCountSum: number;
-  private _userRole: number;
+  private _userRole: Role;
 
   get userPassword(): string {
     return this._userPassword;
@@ -101,13 +104,13 @@ export class User {
 
   constructor(){
 
-    this._userLogin = 'Login1';
+    this._userLogin = 'Login';
     this._userPassword = '';
     this._userConfirmPassword = '';
-    this._userEmail = '';
+    this._userEmail = 'fggg@com.ccc';
     this._userLastname = 'Lastname';
     this._userName = 'Name';
-    this._userPhone = '';
+    this._userPhone = '+3805555555';
     this._userCountSum = 0;
     this._userPhoto = 'https://cdnimg.rg.ru/img/content/156/70/54/1_d_850.jpg';
 

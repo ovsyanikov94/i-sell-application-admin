@@ -11,6 +11,24 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { ShowRolesComponent } from './components/show-roles/show-roles.component';
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { DeleteRoleModalComponent } from './modals/delete-role-modal/delete-role-modal.component';
+import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/deleteCategory.modal.component";
+import {MainComponent} from './components/main/main.component';
+import {CategoryComponent} from './components/category/category.component';
+import {MainContentComponent} from "./components/main-content/main-content.component";
+import { PersonalDataComponent } from "./components/personal-data/personal-data.component";
+import { UserListComponent } from "./components/user-list/user-list.component";
+import { SingleLotComponent } from "./components/single-lot/single-lot.component";
+import { SingleUserComponent } from "./components/single-user/single-user.component";
+import { SingleLotApproveComponent } from './components/single-lot-approve/single-lot-approve.component';
+import { LotsListTableComponent } from './components/lots-list-table/lots-list-table.component';
+import { RejectModalComponent } from './modals/reject-modal/reject-modal.component';
+import { LotNotificationComponent } from './components/lot-notification/lot-notification.component';
+import {AuthorizeComponent} from './components/authorize/authorize.component';
+import {PasswordRecoveryConfirmComponent} from './components/password-recovery-confirm/password-recovery-confirm.component';
+import {PasswordRecoveryRequestComponent} from './components/password-recovery-request/password-recovery-request.component';
+import {RegistrationComponent} from './components/registration/registration.component';
+
+import { AuthModalComponent } from './modals/auth.modal/auth.modal.component';
 
 //SLIDER
 import { SliderModule } from 'angular-image-slider';
@@ -35,14 +53,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ApprovedLotComponent } from './components/approved-lot/approved-lot.component';
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/deleteCategory.modal.component";
-import {MainComponent} from './components/main/main.component';
-import {CategoryComponent} from './components/category/category.component';
-import {MainContentComponent} from "./components/main-content/main-content.component";
-import { PersonalDataComponent } from "./components/personal-data/personal-data.component";
-import { UserListComponent } from "./components/user-list/user-list.component";
-import { SingleLotComponent } from "./components/single-lot/single-lot.component";
-import { SingleUserComponent } from "./components/single-user/single-user.component";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -62,7 +74,16 @@ declarations: [
     PersonalDataComponent,
     UserListComponent,
     SingleLotComponent,
-    SingleUserComponent
+    SingleUserComponent,
+    SingleLotApproveComponent,
+    LotsListTableComponent,
+    LotNotificationComponent,
+    RejectModalComponent,
+    AuthorizeComponent,
+    PasswordRecoveryConfirmComponent,
+    PasswordRecoveryRequestComponent,
+    RegistrationComponent,
+    AuthModalComponent
   ],
   imports: [
     BrowserModule,
@@ -91,13 +112,16 @@ declarations: [
     MatDividerModule,
     MatGridListModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
 
   providers: [],
   entryComponents: [
     DeleteCategoryModalComponent,
-    DeleteRoleModalComponent
+    DeleteRoleModalComponent,
+    RejectModalComponent,
+    AuthModalComponent
   ],
   bootstrap: [AppComponent]
 })

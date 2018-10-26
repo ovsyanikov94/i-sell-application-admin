@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
-import { LotsListTableDataSource } from './lots-list-table-datasource';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 import {Lot} from '../../models/lot/Lot';
 
@@ -14,7 +13,8 @@ export class LotsListTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  dataSource: LotsListTableDataSource;
+  private lots: Lot[] = [];
+  public lotListSource: MatTableDataSource<Lot>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [  'lotSeller',
@@ -25,18 +25,35 @@ export class LotsListTableComponent implements OnInit {
                         'lotStatus',
   ];
 
-  ngOnInit() {
-    this.dataSource = new LotsListTableDataSource(this.paginator, this.sort);
+  constructor() {
 
-    // this.dataSource.filterPredicate = (data: Lot, filter: string) => {
-    //   return data.lotName == filter;
-    // };
+    for ( let i = 0 ; i < 50 ; i++ ){
+
+      const lot: Lot = new Lot();
+
+      lot.lotName += ` ${i}`;
+      this.lots.push(lot);
+
+    }//for i
+
+  }//constructor
+
+
+  ngOnInit() {
+
+    this.lotListSource = new MatTableDataSource<Lot>(this.lots);
+    this.lotListSource.paginator = this.paginator;
+    this.lotListSource.sort = this.sort;
 
   }//ngOnInit
 
-  // applyFilter(filterValue: string) {
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }//applyFilter
+  predicate(  ){}
+
+  applyFilter(filterValue: string) {
+
+    this.lotListSource.filter = filterValue.trim().toLowerCase();
+
+  }//applyFilter
 
 
 }//LotsListTableComponent

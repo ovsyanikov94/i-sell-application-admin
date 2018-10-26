@@ -9,9 +9,9 @@
 
   <div class="mat-elevation-z8">
 
-    <!--<mat-form-field formControl="filterFormControl">-->
-      <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" >-->
-    <!--</mat-form-field>-->
+    <mat-form-field formControl="filterFormControl">
+      <input #filter matInput (keyup)="applyFilter(filter.value)" placeholder="Filter" >
+    </mat-form-field>
 
     <div class="row justify-content-center">
 
@@ -20,14 +20,14 @@
     </div>
 
     <mat-paginator #paginator
-                   [length]="dataSource.lots.length"
+                   [length]="lotListSource.data.length"
                    [pageIndex]="0"
                    [pageSize]="50"
                    [pageSizeOptions]="[25, 50, 100, 250]">
     </mat-paginator>
 
 
-    <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+    <table mat-table #table [dataSource]="lotListSource" matSort aria-label="Elements">
 
       <!-- Колонка "Продавец" -->
       <ng-container matColumnDef="lotSeller">

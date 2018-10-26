@@ -12,10 +12,11 @@ export class LotNotificationComponent implements OnInit {
   constructor(public snackBar: MatSnackBar) { }//constructor
 
   ngOnInit() {
-    // setTimeout(this.openSnackBar , 2000);
+
+    setInterval(this.openSnackBar.bind(this) , 2000);
     // console.log('snack');
 
-    this.openSnackBar();
+    //this.openSnackBar();
 
   }//ngOnInit
 

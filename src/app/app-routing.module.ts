@@ -8,17 +8,24 @@ import { ShowRolesComponent } from './components/show-roles/show-roles.component
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { ApprovedLotComponent } from './components/approved-lot/approved-lot.component';
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
-import {PersonalDataComponent} from './components/personal-data/personal-data.component'
+import {PersonalDataComponent} from './components/personal-data/personal-data.component';
 import {UserListComponent} from './components/user-list/user-list.component';
+import {LotsListTableComponent} from './components/lots-list-table/lots-list-table.component';
+import {SingleLotApproveComponent} from './components/single-lot-approve/single-lot-approve.component';
+import {AuthorizeComponent} from './components/authorize/authorize.component';
+import {PasswordRecoveryConfirmComponent} from './components/password-recovery-confirm/password-recovery-confirm.component';
+import {PasswordRecoveryRequestComponent} from './components/password-recovery-request/password-recovery-request.component';
+import {RegistrationComponent} from './components/registration/registration.component';
 
 const routes: Routes = [
+
   {
     path: 'main',
     component: MainComponent,
     children: [
       {
         path: '',
-        component: MainContentComponent
+        component: AdminProfileComponent
       },
       {
         path: 'category',
@@ -48,9 +55,36 @@ const routes: Routes = [
         path: 'user-list',
         component: UserListComponent
       },
-    ]
+      {
+        path: 'approve-lot-request',
+        component: SingleLotApproveComponent
+      },
+      {
+        path: 'lots-list',
+        component: LotsListTableComponent
+      }
+    ],
   },
-
+  {
+    path: 'register',
+    component: RegistrationComponent
+  },
+  {
+    path: 'authorize',
+    component: AuthorizeComponent
+  },
+  {
+    path: 'recovery',
+    component: PasswordRecoveryRequestComponent
+  },
+  {
+    path: 'recovery/confirm',
+    component: PasswordRecoveryConfirmComponent
+  },
+  {
+    path: "**",
+    component: AuthorizeComponent
+  }
 ];
 
 @NgModule({

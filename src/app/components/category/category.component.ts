@@ -4,7 +4,11 @@ import { FormControl , Validators } from '@angular/forms';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { DeleteCategoryModalComponent } from '../../modals/deleteCategory.modal/deleteCategory.modal.component';
 import { CategoryData } from '../../models/modal.category/category.data';
+import { Constants } from '../../models/Constants';
+
 import { MatDialog } from '@angular/material';
+import {CategoryService} from "../../services/category/category.service";
+import {ServerResponse} from "../../models/server/ServerResponse";
 
 @Component({
   selector: 'app-category',
@@ -19,10 +23,8 @@ export class CategoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-
-
   public categories: Category[];
-  public cat: Category = new Category(-1, '');
+  public cat: Category = new Category('', '');
   public visib: boolean;
 
   public formControls: FormControl[] = [];
@@ -32,27 +34,51 @@ export class CategoryComponent implements OnInit {
     Validators.pattern(/^[a-z,а-я,0-9, ]{2,20}$/i),
   ]);
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    private categoryService: CategoryService
+  ) {
 
-    this.categories = [
-      new Category(1, 'Аксессуар')
-      ,
-      new Category(2, 'Смартфон'),
-    ];
     this.visib = false;
 
-    this.dataSource = new MatTableDataSource(this.categories);
-
-    for ( let i = 0 ; i < this.categories.length ; i++ ) {
-
-      this.formControls.push( new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[a-z,а-я,0-9, ]{2,20}$/i),
-      ]));
-
-    }// for
+    this.categoryService.getCategories(
+      Constants.APP_LIMIT,
+      Constants.APP_OFFSET
+    ).then( this.onCategoryResponse );
 
   }
+
+  onCategoryResponse(response: ServerResponse){
+
+    console.log(response);
+
+    try{
+
+        if( response.statusCode === 200 ){
+
+          this.categories = response.data as Category[];
+
+          this.dataSource = new MatTableDataSource(this.categories);
+
+          for ( let i = 0 ; i < this.categories.length ; i++ ) {
+
+            this.formControls.push( new FormControl('', [
+              Validators.required,
+              Validators.pattern(/^[a-z,а-я,0-9, ]{2,20}$/i),
+            ]));
+
+          }// for
+
+        }//if
+
+    }//try
+    catch(ex){
+
+      console.log( "Exception: " , ex );
+
+    }//catch
+
+  }//onCategoryResponse
 
   ngOnInit() {
 
@@ -89,7 +115,7 @@ export class CategoryComponent implements OnInit {
   delete( event , category: Category ) {
 
     this.openDialog({
-      categoryID: category.categoryID,
+      categoryID: category.id,
       categoryTitle: category.categoryTitle,
     });
 

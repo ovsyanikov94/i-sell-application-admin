@@ -3,12 +3,12 @@
 
 
 export class Category {
-  get categoryID(): number {
-    return this._categoryID;
+  get id(): string {
+    return this._id;
   }
 
-  set categoryID(value: number) {
-    this._categoryID = value;
+  set id(value: string) {
+    this._id = value;
   }
 
   get categoryTitle(): string {
@@ -19,11 +19,11 @@ export class Category {
     this._categoryTitle = value;
   }
 
-  private _categoryID: number;
+  private _id: string;
   private _categoryTitle: string;
 
-  constructor(value: number, name: string){
-    this._categoryID = value;
+  constructor(id: string, name: string){
+    this._id = id;
     this._categoryTitle = name;
   }
 

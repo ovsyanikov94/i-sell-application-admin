@@ -6,10 +6,10 @@
     <p>{{categoryData.categoryTitle}}</p>
   </div>
   <div mat-dialog-actions class="col-8" >
-    <button mat-raised-button color="primary" class="col-12" (click)="closeDialog()">Ок</button>
+    <button mat-raised-button color="primary" class="col-12" (click)="closeDialog( true )">Ок</button>
   </div>
   <div mat-dialog-actions class="col-8" style="margin-top: 25px">
-    <button mat-raised-button color="primary" class="col-12" (click)="closeDialog()">Отмена</button>
+    <button mat-raised-button color="primary" class="col-12" (click)="closeDialog( false )">Отмена</button>
   </div>
 </div>
 

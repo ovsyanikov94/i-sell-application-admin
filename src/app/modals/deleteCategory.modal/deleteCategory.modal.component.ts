@@ -16,8 +16,8 @@ export class DeleteCategoryModalComponent implements OnInit {
 
   }
 
-  closeDialog(): void {
-    this.dialogRef.close();
+  closeDialog( result ): void {
+    this.dialogRef.close( result );
   }
 
   ngOnInit(){

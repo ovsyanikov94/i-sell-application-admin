@@ -4,7 +4,7 @@ import { ApiRoutes } from '../../models/ApiRoutes';
 
 import {ServerResponse} from "../../models/server/ServerResponse";
 
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,32 @@ export class CategoryService {
       ).toPromise() as Promise<ServerResponse>;
 
   }//getCategories
+
+  addCategory( title: string ): Promise<ServerResponse>{
+
+    return this.http.post(
+      `${ApiRoutes.SERVER_URL}${ApiRoutes.ADD_CATEGORY}`,
+      {
+        categoryTitle: title
+      }
+    ).toPromise() as Promise<ServerResponse>;
+
+  }//addCategory
+
+  removeCategory( id: string ){
+
+    const request = new HttpRequest(
+      'DELETE',
+      `${ApiRoutes.SERVER_URL}${ApiRoutes.DELETE_CATEGORY}`,
+      {
+        'id': id
+      }
+    );
+
+    return this.http.request(request).subscribe( next => {
+        return next;
+    });
+
+  }//addCategory
 
 }//CategoryService

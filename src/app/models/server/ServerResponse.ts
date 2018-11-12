@@ -2,7 +2,7 @@
 
 export class ServerResponse {
 
-  public statusCode: number;
+  public status: number;
   public message: string;
   public data: any;
 

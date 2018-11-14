@@ -7,6 +7,9 @@ import {FormControl, Validators} from '@angular/forms';
 import { PasswordConfirmValidator } from '../../Validators/PaswordValidator';
 import { MessageModalComponent } from '../../modals/message-modal/message-modal.component';
 
+import {UsersRoleService} from "../../services/usersRole/users-role.service";
+import {ServerResponse} from "../../models/server/ServerResponse";
+
 @Component({
   selector: 'app-add-moderator',
   templateUrl: './add-moderator.component.html',
@@ -54,14 +57,15 @@ export class AddModeratorComponent implements OnInit {
 
   // public matcher = new MyErrorStateMatcher();
 
-  public roles: Role[] = [
-    new Role(1, 'Администратор'),
-    new Role(2, 'Модератор'),
-    new Role(3, 'Аноним'),
-  ];
+  public roles: Role[] = [];
   constructor(
-    private addModeratorDialog: MatDialog
-  ) { }
+    private addModeratorDialog: MatDialog,
+    private usersRoleService: UsersRoleService
+  ) {
+    this.usersRoleService.getUsersRole()
+      .then(this.getUsersRole.bind(this));
+
+  }
 
   ngOnInit() {
   }
@@ -79,6 +83,14 @@ export class AddModeratorComponent implements OnInit {
 
   }//
 
+  getUsersRole(response:ServerResponse){
+
+//тут будет разбор ответа
+
+    /*new Role(1, 'Администратор'),
+      new Role(2, 'Модератор'),
+      new Role(3, 'Аноним')*/
+  }
   openDialog( msg: string ){
 
     this.addModeratorDialog.open(MessageModalComponent , {

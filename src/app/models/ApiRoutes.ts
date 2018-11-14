@@ -10,5 +10,8 @@ export class ApiRoutes{
   static readonly ADD_CATEGORY:        string = 'add-category';
   static readonly DELETE_CATEGORY:     string = 'delete-category';
 
+  //UsersRole
+  static readonly GET_USERS_ROLE:      string = 'list-users-role';
+
 
 }

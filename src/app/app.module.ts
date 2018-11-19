@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import 'hammerjs';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,19 +57,13 @@ import { ApprovedLotComponent } from './components/approved-lot/approved-lot.com
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/deleteCategory.modal.component";
-import {MainComponent} from './components/main/main.component';
-import {CategoryComponent} from './components/category/category.component';
-import {MainContentComponent} from "./components/main-content/main-content.component";
-import { PersonalDataComponent } from "./components/personal-data/personal-data.component";
-import { UserListComponent } from "./components/user-list/user-list.component";
-import { SingleLotComponent } from "./components/single-lot/single-lot.component";
-import { SingleUserComponent } from "./components/single-user/single-user.component";
+
 
 //FILTERS
 import {FilterLengthPipe} from './filters/myfilter';
 
-
+//SERVICES
+import {AddUserService} from "./services/user/add-user.service";
 
 @NgModule({
 
@@ -131,10 +125,13 @@ declarations: [
     MatGridListModule,
     MatExpansionModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
 
-  providers: [],
+  providers: [
+    AddUserService
+  ],
   entryComponents: [
     DeleteCategoryModalComponent,
     DeleteRoleModalComponent,

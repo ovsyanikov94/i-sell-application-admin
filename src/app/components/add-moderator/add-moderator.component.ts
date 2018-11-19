@@ -7,10 +7,14 @@ import {FormControl, Validators} from '@angular/forms';
 import { PasswordConfirmValidator } from '../../Validators/PaswordValidator';
 import { MessageModalComponent } from '../../modals/message-modal/message-modal.component';
 
+import {AddUserService} from "../../services/user/add-user.service";
+
+
 @Component({
   selector: 'app-add-moderator',
   templateUrl: './add-moderator.component.html',
   styleUrls: ['./add-moderator.component.css']
+
 })
 export class AddModeratorComponent implements OnInit {
 
@@ -26,7 +30,7 @@ export class AddModeratorComponent implements OnInit {
   ]);
   public loginFormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern(/^[a-z]{4,20}$/i),
+    Validators.pattern(/^[a-z\d]{4,16}$/i),
   ]);
   public emailFormControl = new FormControl('', [
     Validators.required,
@@ -57,13 +61,16 @@ export class AddModeratorComponent implements OnInit {
   public roles: Role[] = [
     new Role(1, 'Администратор'),
     new Role(2, 'Модератор'),
-    new Role(3, 'Аноним'),
+    new Role(3, 'Загеристрированный'),
+    new Role(4, 'Анонимный'),
   ];
   constructor(
-    private addModeratorDialog: MatDialog
+    private addModeratorDialog: MatDialog,
+    private addUserService: AddUserService
   ) { }
 
   ngOnInit() {
+
   }
 
   checkAllFields(): boolean{
@@ -89,16 +96,39 @@ export class AddModeratorComponent implements OnInit {
 
   }//openDialog
 
-  addModerator(){
+  async addModerator(){
 
 
     if ( this.checkAllFields() === true ){
       //AJAX REGISTER REQUEST
+      if (!this.user.userPhoto) {
+        this.openDialog('Выберите фото!');
+      }//if
+
+      try{
+
+        const response = await this.addUserService.addUserWithRole(this.user);
+
+        console.log('response' , response);
+        this.openDialog( response.message );
+
+      }//try
+      catch (ex){
+
+        console.log('Exception: ' , ex);
+        this.openDialog(ex.error.message );
+
+      }//catch
     }//if
     else{
       this.openDialog('Есть ошибки в заполнении формы!');
     }//else
 
   }//registry
+
+  addFile(event) {
+   this.user.userPhoto = event.target.files;
+   console.log(this.user.userPhoto);
+  }
 
 }

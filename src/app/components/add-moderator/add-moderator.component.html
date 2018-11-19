@@ -88,8 +88,8 @@
           </mat-form-field>
 
           <mat-form-field class="col-12">
-            <ngx-mat-file-input [formControl]="photoControl" placeholder="Прикрепить фото" ></ngx-mat-file-input>
-            <mat-icon matSuffix>folder</mat-icon>
+            <ngx-mat-file-input (change)="addFile($event)" [formControl]="photoControl" placeholder="Прикрепить фото" ></ngx-mat-file-input>
+            <mat-icon matSuffix >folder</mat-icon>
           </mat-form-field>
 
           <div class="row justify-content-center text-center">

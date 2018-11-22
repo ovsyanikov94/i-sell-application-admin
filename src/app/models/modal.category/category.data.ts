@@ -3,6 +3,6 @@
 export interface CategoryData {
 
   categoryTitle: string;
-  categoryID: number;
+  categoryID: string;
 
 }

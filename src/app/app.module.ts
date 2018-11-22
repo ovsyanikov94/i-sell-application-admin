@@ -57,13 +57,22 @@ import { ApprovedLotComponent } from './components/approved-lot/approved-lot.com
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/deleteCategory.modal.component";
+import {MainComponent} from './components/main/main.component';
+import {CategoryComponent} from './components/category/category.component';
+import {MainContentComponent} from "./components/main-content/main-content.component";
+import { PersonalDataComponent } from "./components/personal-data/personal-data.component";
+import { UserListComponent } from "./components/user-list/user-list.component";
+import { SingleLotComponent } from "./components/single-lot/single-lot.component";
+import { SingleUserComponent } from "./components/single-user/single-user.component";
 
 //FILTERS
 import {FilterLengthPipe} from './filters/myfilter';
 
 //SERVICES
 import {AddUserService} from "./services/user/add-user.service";
+//SERVICES
+import { CategoryService } from './services/category/category.service';
 
 @NgModule({
 
@@ -130,8 +139,10 @@ declarations: [
   ],
 
   providers: [
+    CategoryService,
     AddUserService
   ],
+
   entryComponents: [
     DeleteCategoryModalComponent,
     DeleteRoleModalComponent,

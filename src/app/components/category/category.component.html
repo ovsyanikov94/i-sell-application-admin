@@ -14,7 +14,7 @@
     <div class="row justify-content-center mat-elevation-z8 p-2 ">
 
       <mat-form-field class="col-12 example-full-width ">
-        <input name="nameCategory" matInput placeholder="Введите название категории" [(ngModel)]="cat.categoryTitle" [formControl]="categoryNameFormControl">
+        <input name="nameCategory" matInput placeholder="Введите название категории" [(ngModel)]="cat.title" [formControl]="categoryNameFormControl">
         <mat-error *ngIf="categoryNameFormControl.hasError('pattern') && !categoryNameFormControl.hasError('required')">
           Введите корректное название категории
         </mat-error>
@@ -41,18 +41,13 @@
   </div>
     <!-- Checkbox Column -->
     <div class="mat-elevation-z8 ">
-      <table mat-table [dataSource]="dataSource" matSort>
-
-        <ng-container  matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell name="idCategory" *matCellDef="let row"> {{row.categoryID}} </td>
-        </ng-container>
+      <table #categoryTable mat-table [dataSource]="dataSource" matSort>
 
         <ng-container name="nameCategory" matColumnDef="title" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
           <td mat-cell *matCellDef="let row; let i = index">
             <mat-form-field class="col-10 example-full-width">
-              <input name="nameCategory" matInput placeholder="Введите название категории" [(ngModel)]="row.categoryTitle" [formControl]="formControls[i]">
+              <input name="nameCategory" matInput placeholder="Введите название категории" [(ngModel)]="row.title" [formControl]="formControls[i]">
               <mat-error *ngIf="formControls[i].hasError('pattern') && !formControls[i].hasError('required')">
                 Введите корректное название категории
               </mat-error>
@@ -71,7 +66,7 @@
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef > Удалить </th>
-        <td mat-cell *matCellDef="let row"><button (click)="delete($event , row)" mat-raised-button color="warn" style="font-size: 0.8em">Удалить</button></td>
+        <td mat-cell *matCellDef="let row"><button (click)="delete($event , row )" mat-raised-button color="warn" style="font-size: 0.8em">Удалить</button></td>
       </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

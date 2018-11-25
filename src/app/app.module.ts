@@ -128,7 +128,8 @@ declarations: [
     MatExpansionModule,
     MatTableModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
 
   providers: [

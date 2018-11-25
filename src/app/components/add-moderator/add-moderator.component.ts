@@ -6,9 +6,9 @@ import {Role} from '../../models/role/Role';
 import {FormControl, Validators} from '@angular/forms';
 import { PasswordConfirmValidator } from '../../Validators/PaswordValidator';
 import { MessageModalComponent } from '../../modals/message-modal/message-modal.component';
-
+import {Constants} from "../../models/Constants";
 import {AddUserService} from "../../services/user/add-user.service";
-
+import {ServerResponse} from "../../models/server/ServerResponse";
 
 @Component({
   selector: 'app-add-moderator',
@@ -19,7 +19,7 @@ import {AddUserService} from "../../services/user/add-user.service";
 export class AddModeratorComponent implements OnInit {
 
   public user: User = new User();
-
+  public selectedRole: number;
   public nameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(/^[a-z а-я]{2,25}$/i),
@@ -58,16 +58,34 @@ export class AddModeratorComponent implements OnInit {
 
   // public matcher = new MyErrorStateMatcher();
 
-  public roles: Role[] = [
-    new Role(1, 'Администратор'),
-    new Role(2, 'Модератор'),
-    new Role(3, 'Загеристрированный'),
-    new Role(4, 'Анонимный'),
-  ];
+  public roles: Role[] = [];
+    //new Role(1, 'Администратор'),
+   // new Role(2, 'Модератор'),
+   // new Role(3, 'Загеристрированный'),
+    //new Role(4, 'Анонимный'),
+  //];
   constructor(
     private addModeratorDialog: MatDialog,
     private addUserService: AddUserService
-  ) { }
+  ) {
+
+    this.addUserService.getUserRoles(
+      Constants.APP_OFFSET,
+      Constants.APP_LIMIT
+    ).then( this.onUserRolesResponse.bind(this) );
+
+  }
+
+  onUserRolesResponse(response: ServerResponse){
+
+
+    if ( response.status === 200 ){
+
+      this.roles = response.data as Role[];
+
+    }//if
+
+  }//onUserRolesResponse
 
   ngOnInit() {
 
@@ -96,6 +114,9 @@ export class AddModeratorComponent implements OnInit {
 
   }//openDialog
 
+
+
+
   async addModerator(){
 
 
@@ -107,7 +128,12 @@ export class AddModeratorComponent implements OnInit {
 
       try{
 
-        const response = await this.addUserService.addUserWithRole(this.user);
+        if (this.selectedRole) {
+          const roleUserResponse = await this.addUserService.getRoleUserById(this.selectedRole);
+          this.user.userRole = roleUserResponse.data;
+        }//if
+
+        const response = await this.addUserService.addUserWithRole(this.user, this.photoControl.value);
 
         console.log('response' , response);
         this.openDialog( response.message );
@@ -126,9 +152,5 @@ export class AddModeratorComponent implements OnInit {
 
   }//registry
 
-  addFile(event) {
-   this.user.userPhoto = event.target.files;
-   console.log(this.user.userPhoto);
-  }
 
 }

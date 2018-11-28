@@ -16,7 +16,7 @@ export class LotComponent implements OnInit {
   public currentUser: User = new User();
 
   constructor() {
-      this.lot.lotCategory = new Category('',"Категория 1");
+      this.lot.categories = [new Category('',"Категория 1")];
   }
 
   ngOnInit() {

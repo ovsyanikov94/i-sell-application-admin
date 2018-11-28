@@ -43,8 +43,8 @@
           </mat-form-field>
 
           <mat-form-field class="example-full-width col-12">
-            <mat-select [(ngModel)]="selectedRole" placeholder="Выберите роль" [formControl]="selectedRoleControl" >
-              <mat-option *ngFor="let role of roles" [value]="role.roleID">{{role.roleTitle}}</mat-option>
+            <mat-select  [(ngModel)]="selectedRole" placeholder="Выберите роль" [formControl]="selectedRoleControl" >
+              <mat-option *ngFor="let role of roles" [value]="role.userRoleId">{{role.roleTitle}}</mat-option>
             </mat-select>
             <!--<mat-hint>Errors appear instantly!</mat-hint>-->
             <mat-error *ngIf="selectedRoleControl.hasError('required')">Вы должны выбрать роль</mat-error>
@@ -63,7 +63,7 @@
           <mat-form-field class="example-full-width col-12">
             <input name="userPhone" matInput placeholder="Телефон" [(ngModel)]="user.userPhone" [formControl]="phoneFormControl">
             <mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
-              Введите корректный номер телефона. +380ХХХХХХХХХХ
+              Введите корректный номер телефона. +38(0ХХ)ХХХХ-ХХ-ХХ
             </mat-error>
             <mat-error *ngIf="phoneFormControl.hasError('required')">
               телефон <strong>обязателен</strong>

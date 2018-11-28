@@ -14,7 +14,7 @@ export class ApiRoutes{
   static readonly USER_INFO: string = 'getUser';
   static readonly USER_ADD: string = 'addUserWithRole';
   static readonly GET_USER_ROLE_BYID: string = 'getRoleUserById';
-  static readonly GET_USER_ROLES_LIST: string = 'list-users-role';
+  static readonly GET_USER_ROLES_LIST: string = 'listUsersRole';
 
 
   //CATEGORIES

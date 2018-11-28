@@ -6,10 +6,13 @@ import {Role} from '../../models/role/Role';
 import {FormControl, Validators} from '@angular/forms';
 import { PasswordConfirmValidator } from '../../Validators/PaswordValidator';
 import { MessageModalComponent } from '../../modals/message-modal/message-modal.component';
-import {Constants} from "../../models/Constants";
 import {AddUserService} from "../../services/user/add-user.service";
 import {ServerResponse} from "../../models/server/ServerResponse";
-
+import {MatSelectModule} from '@angular/material/select';
+export interface Food {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-add-moderator',
   templateUrl: './add-moderator.component.html',
@@ -20,6 +23,17 @@ export class AddModeratorComponent implements OnInit {
 
   public user: User = new User();
   public selectedRole: number;
+  public roles: Role[] = [];
+  //new Role(1, 'Администратор'),
+  // new Role(2, 'Модератор'),
+  // new Role(3, 'Загеристрированный'),
+  //new Role(4, 'Анонимный'),
+  //];
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
   public nameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(/^[a-z а-я]{2,25}$/i),
@@ -38,7 +52,7 @@ export class AddModeratorComponent implements OnInit {
   ]);
   public phoneFormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern(/^((\+3)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/ )
+    Validators.pattern(/^\+\d{2}\(\d{3}\)\d{3}-\d{2}-\d{2}$/i)
   ]);
 
   public passwordFormControl = new FormControl('', [
@@ -58,33 +72,24 @@ export class AddModeratorComponent implements OnInit {
 
   // public matcher = new MyErrorStateMatcher();
 
-  public roles: Role[] = [];
-    //new Role(1, 'Администратор'),
-   // new Role(2, 'Модератор'),
-   // new Role(3, 'Загеристрированный'),
-    //new Role(4, 'Анонимный'),
-  //];
+
   constructor(
     private addModeratorDialog: MatDialog,
     private addUserService: AddUserService
   ) {
-
-    this.addUserService.getUserRoles(
-      Constants.APP_OFFSET,
-      Constants.APP_LIMIT
-    ).then( this.onUserRolesResponse.bind(this) );
-
+    console.log('Before service');
+    this.addUserService.getUserRoles()
+      .then( this.onUserRolesResponse.bind(this) );
   }
 
   onUserRolesResponse(response: ServerResponse){
 
 
-    if ( response.status === 200 ){
-
+    if ( response.status === 200 ) {
       this.roles = response.data as Role[];
-
-    }//if
-
+      console.log(this.roles);
+    }
+    //console.log(this.roles);
   }//onUserRolesResponse
 
   ngOnInit() {
@@ -122,10 +127,8 @@ export class AddModeratorComponent implements OnInit {
 
     if ( this.checkAllFields() === true ){
       //AJAX REGISTER REQUEST
-      if (!this.user.userPhoto) {
-        this.openDialog('Выберите фото!');
-      }//if
 
+      console.log(this.selectedRole);
       try{
 
         if (this.selectedRole) {

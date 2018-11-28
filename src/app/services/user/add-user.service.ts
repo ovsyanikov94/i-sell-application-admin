@@ -29,17 +29,12 @@ export class AddUserService {
 
   }//getTypeLot
 
-  getUserRoles( offset: number, limit: number ): Promise<ServerResponse>{
+  getUserRoles(  ): Promise<ServerResponse>{
 
-    const httpParams: HttpParams = new HttpParams()
-      .set('limit' , limit.toString())
-      .set('offset' , offset.toString());
 
     return this.http.get(
       `${ApiRoutes.SERVER_URL}${ApiRoutes.GET_USER_ROLES_LIST}`,
-      {
-        params: httpParams
-      }
+
     ).toPromise() as Promise<ServerResponse>;
 
   }//getTypeLot
@@ -51,7 +46,7 @@ export class AddUserService {
 
     if ( files ){
       [].forEach.call(files.files , ( file ) => {
-        formData.append('' , file );
+        formData.append('photo' , file );
       });
     }//if
 
@@ -61,7 +56,7 @@ export class AddUserService {
     formData.append('lastName' , user.userLastname) ;
     formData.append('phone' , user.userPhone) ;
     formData.append('password' , user.userPassword) ;
-    formData.append('role' , user.userRole.roleID.toString()) ;
+    formData.append('role' , user.userRole.userRoleId.toString()) ;
 
     return this.http.post(
       `${ApiRoutes.SERVER_URL}${ApiRoutes.USER_ADD}`,

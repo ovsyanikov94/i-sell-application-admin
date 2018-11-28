@@ -37,9 +37,9 @@ export class ShowRolesComponent implements OnInit {
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     this.roles=[
-      new Role(1, 'Администратор'),
-      new Role(2, 'Модероатор'),
-      new Role(3, 'Аноним'),
+     // new Role(1, 'Администратор'),
+      //ew Role(2, 'Модероатор'),
+      //new Role(3, 'Аноним'),
     ];
 
     this.dataSource = new MatTableDataSource(this.roles);

@@ -75,6 +75,18 @@ export class LotService {
 
   }//getLot
 
+  approvedLotById( id: string): Promise<ServerResponse>{
+
+    return this.http.post(
+      `${ApiRoutes.SERVER_URL}${ApiRoutes.APPROVED_LOT_BY_ID}`,
+      {
+        id: id
+      }
+    ).toPromise() as Promise<ServerResponse>;
+
+
+  }//getLot
+
   getLotById( id: string ): Promise<ServerResponse> {
 
     const httpParams: HttpParams = new HttpParams().set('id', id);

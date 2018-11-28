@@ -19,6 +19,7 @@ import {PasswordRecoveryRequestComponent} from './components/password-recovery-r
 import {RegistrationComponent} from './components/registration/registration.component';
 import {AddModeratorComponent} from "./components/add-moderator/add-moderator.component";
 import {LotsResolveService} from "./services/lot/lots-resolve.service";
+import {SingleLotResolveService} from "./services/lot/single-lot-resolve.service";
 
 const routes: Routes = [
   {
@@ -59,7 +60,10 @@ const routes: Routes = [
       },
       {
         path: 'approve-lot-request/:id',
-        component: SingleLotApproveComponent
+        component: SingleLotApproveComponent,
+        resolve: {
+          singlelotResponse: SingleLotResolveService
+        }
       },
       {
         path: 'lots-list',

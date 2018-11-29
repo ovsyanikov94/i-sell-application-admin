@@ -15,6 +15,7 @@ export class ApiRoutes{
   static readonly USER_ADD: string = 'addUserWithRole';
   static readonly GET_USER_ROLE_BYID: string = 'getRoleUserById';
   static readonly GET_USER_ROLES_LIST: string = 'listUsersRole';
+  static readonly IS_USER_AUTHORIZED: string = 'check-admin-access';
 
 
   //CATEGORIES

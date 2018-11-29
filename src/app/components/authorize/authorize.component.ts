@@ -6,6 +6,8 @@ import { AuthModalComponent } from '../../modals/auth.modal/auth.modal.component
 import { User } from '../../models/user/User';
 import { MatDialog } from '@angular/material';
 import { AuthData} from '../../models/modal.data/auth.data';
+import {AuthService} from '../../services/user/auth.service';
+import {ServerResponse} from '../../models/server/ServerResponse';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class AuthorizeComponent implements OnInit {
 
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   ) {
 
   }
@@ -37,7 +40,7 @@ export class AuthorizeComponent implements OnInit {
 
   }
 
-  authorize( event ){
+  async authorize( event ){
 
     if ( this.loginFormControl.hasError('required') || this.loginFormControl.hasError('pattern')){
       return;
@@ -51,14 +54,20 @@ export class AuthorizeComponent implements OnInit {
       message: string;
     };
 
-    authData.message = "Вы вошли!";
+    try{
 
-    if ( event instanceof KeyboardEvent && event.code === "Enter" ){
-      this.openDialog(authData);
-    }//if
-    else if ( event instanceof  MouseEvent){
-      this.openDialog(authData);
-    }//else if
+      const response: ServerResponse = await this.authService.authorize(this.user);
+
+      console.log('RESPONSE: ' , response);
+
+    }//try
+    catch(ex){
+
+      console.log('EXCEPTION: ' , ex);
+
+    }//catch
+
+
 
 
   }//authorize

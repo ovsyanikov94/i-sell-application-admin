@@ -31,7 +31,6 @@ export class Lot {
   public countLikes: number;
   public countDisLikes: number;
 
-
   constructor(){
     // this._lotStatus = 'статус лота';
     // this._lotType = 'тип лота';

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -62,7 +64,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 //FILTERS
 import {FilterLengthPipe} from './filters/myfilter';
 
-
+//SERVICES
+import { CategoryService } from './services/category/category.service';
 
 @NgModule({
 
@@ -124,10 +127,13 @@ declarations: [
     MatGridListModule,
     MatExpansionModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
 
-  providers: [],
+  providers: [
+    CategoryService
+  ],
   entryComponents: [
     DeleteCategoryModalComponent,
     DeleteRoleModalComponent,

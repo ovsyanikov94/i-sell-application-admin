@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    canActivateChild: [ AuthGuard ],
+    //canActivateChild: [ AuthGuard ],
     children: [
       {
         path: '',

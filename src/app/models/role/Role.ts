@@ -3,13 +3,13 @@
 
 
 export class Role {
-  get roleID(): number {
-    return this._roleID;
+  get userRoleId(): number {
+    return this._userRoleId;
   }
 
-  set roleID(value: number) {
-    this._roleID = value;
-  }
+  //set roleID(value: number) {
+    //this._roleID = value;
+  //}
   get roleTitle(): string {
     return this._roleTitle;
   }
@@ -19,11 +19,11 @@ export class Role {
   }
 
 
-  private _roleID: number;
+  private _userRoleId: number;
   private _roleTitle: string;
 
-  constructor(value: number, name: string){
-    this.roleID = value;
+  constructor( name: string){
+    //this.roleID = value;
     this.roleTitle = name;
   }
 

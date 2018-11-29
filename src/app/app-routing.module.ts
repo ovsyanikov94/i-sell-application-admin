@@ -18,11 +18,13 @@ import {PasswordRecoveryConfirmComponent} from './components/password-recovery-c
 import {PasswordRecoveryRequestComponent} from './components/password-recovery-request/password-recovery-request.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import {AddModeratorComponent} from "./components/add-moderator/add-moderator.component";
+import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+    canActivateChild: [ AuthGuard ],
     children: [
       {
         path: '',

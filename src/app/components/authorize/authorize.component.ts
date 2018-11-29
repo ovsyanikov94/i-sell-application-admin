@@ -34,6 +34,9 @@ export class AuthorizeComponent implements OnInit {
     private authService: AuthService
   ) {
 
+    this.user.userLogin = 'rootAdmin';
+    this.user.userPassword = '123456';
+
   }
 
   ngOnInit() {

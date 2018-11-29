@@ -107,13 +107,13 @@ export class Admin{
 
     for ( let i = 0 ; i < 10 ; i++ ){
       const lot: Lot = new Lot();
-      lot.lotName+= i;
+      lot.lotTitle+= i;
       this._approvedLot.push(lot);
     }//for
 
     for ( let i = 0 ; i < 8 ; i++ ){
       const lot: Lot = new Lot();
-      lot.lotName+= i;
+      lot.lotTitle+= i;
       this._rejectedLot.push(lot);
     }//for
 

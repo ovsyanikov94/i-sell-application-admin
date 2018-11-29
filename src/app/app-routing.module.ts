@@ -10,7 +10,16 @@ import { ApprovedLotComponent } from './components/approved-lot/approved-lot.com
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
 import {PersonalDataComponent} from './components/personal-data/personal-data.component';
 import {UserListComponent} from './components/user-list/user-list.component';
+import { LotComponent } from './components/lot/lot.component';
+import {LotsListTableComponent} from './components/lots-list-table/lots-list-table.component';
+import {SingleLotApproveComponent} from './components/single-lot-approve/single-lot-approve.component';
+import {AuthorizeComponent} from './components/authorize/authorize.component';
+import {PasswordRecoveryConfirmComponent} from './components/password-recovery-confirm/password-recovery-confirm.component';
+import {PasswordRecoveryRequestComponent} from './components/password-recovery-request/password-recovery-request.component';
+import {RegistrationComponent} from './components/registration/registration.component';
 import {AddModeratorComponent} from "./components/add-moderator/add-moderator.component";
+import {LotsResolveService} from "./services/lot/lots-resolve.service";
+import {SingleLotResolveService} from "./services/lot/single-lot-resolve.service";
 
 const routes: Routes = [
   {
@@ -19,7 +28,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MainContentComponent
+        component: AdminProfileComponent
       },
       {
         path: 'category',
@@ -50,15 +59,48 @@ const routes: Routes = [
         component: UserListComponent
       },
       {
+        path: 'approve-lot-request/:id',
+        component: SingleLotApproveComponent,
+        resolve: {
+          singlelotResponse: SingleLotResolveService
+        }
+      },
+      {
+        path: 'lots-list',
+        component: LotsListTableComponent,
+        resolve: {
+          lotsResponse: LotsResolveService
+        }
+      },
+      {
         path: 'add-moderator',
         component: AddModeratorComponent
-      }
-    ]
+      },
+      {
+        path: 'lot',
+        component: LotComponent
+      },
+    ],
   },
-
+  {
+    path: 'register',
+    component: RegistrationComponent
+  },
+  {
+    path: 'authorize',
+    component: AuthorizeComponent
+  },
+  {
+    path: 'recovery',
+    component: PasswordRecoveryRequestComponent
+  },
+  {
+    path: 'recovery/confirm',
+    component: PasswordRecoveryConfirmComponent
+  },
   {
     path: "**",
-    component: MainComponent
+    component: AuthorizeComponent
   }
 ];
 

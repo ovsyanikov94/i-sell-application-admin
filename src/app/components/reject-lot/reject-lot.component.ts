@@ -37,7 +37,7 @@ export class RejectLotComponent implements OnInit {
 
     this.rejected  = this.admin.rejectedLot.filter((l)=>{
 
-      return l.lotName.toLowerCase().indexOf(filterValue.toLowerCase())>-1;
+      return l.lotTitle.toLowerCase().indexOf(filterValue.toLowerCase())>-1;
     });
 
     this.length = this.rejected.length;

@@ -5,6 +5,8 @@ import {FormControl, Validators} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthModalComponent } from '../../modals/auth.modal/auth.modal.component';
 import { PasswordConfirmValidator } from '../../Validators/PaswordValidator';
+import {AuthService} from '../../services/user/auth.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -34,7 +36,7 @@ export class RegistrationComponent implements OnInit {
   ]);
   public phoneFormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern(/^((\+3)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/ )
+    Validators.pattern(/^\+\d{2}\(\d{3}\)\d{3}-\d{2}-\d{2}$/i )
   ]);
 
   public passwordFormControl = new FormControl('', [
@@ -47,7 +49,9 @@ export class RegistrationComponent implements OnInit {
   ]);
 
   constructor(
-    private registrationDialog: MatDialog
+    private registrationDialog: MatDialog,
+    private authService: AuthService,
+
   ) { }
 
   openDialog( msg: string ){
@@ -64,7 +68,7 @@ export class RegistrationComponent implements OnInit {
 
     this.user.userName = 'Алексей';
     this.user.userLastname = 'Фамилия';
-    this.user.userPhone = '+3809238130';
+    this.user.userPhone = '+38(092)381-30-25';
     this.user.userLogin = 'Alex';
     this.user.userEmail = 'alex@gmail.com';
 
@@ -83,15 +87,26 @@ export class RegistrationComponent implements OnInit {
   }//
 
 
-  registry(){
+  async registry(){
 
 
-    if ( this.checkAllFields() === true ){
-        //AJAX REGISTER REQUEST
+    if ( this.checkAllFields() === false ){
+      return this.openDialog('Есть ошибки в заполнении формы!');
     }//if
-    else{
-      this.openDialog('Есть ошибки в заполнении формы!');
-    }//else
 
+    try{
+
+      const response = await this.authService.register(this.user);
+
+      console.log('response' , response);
+      this.openDialog( response.message );
+
+    }//try
+    catch (ex){
+
+      console.log('Exception: ' , ex);
+      this.openDialog(ex.error.message );
+
+    }//catch
   }//registry
 }

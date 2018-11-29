@@ -18,13 +18,15 @@ import {PasswordRecoveryConfirmComponent} from './components/password-recovery-c
 import {PasswordRecoveryRequestComponent} from './components/password-recovery-request/password-recovery-request.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import {AddModeratorComponent} from "./components/add-moderator/add-moderator.component";
+import {LotsResolveService} from "./services/lot/lots-resolve.service";
+import {SingleLotResolveService} from "./services/lot/single-lot-resolve.service";
 import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    canActivateChild: [ AuthGuard ],
+    //canActivateChild: [ AuthGuard ],
     children: [
       {
         path: '',
@@ -59,12 +61,18 @@ const routes: Routes = [
         component: UserListComponent
       },
       {
-        path: 'approve-lot-request',
-        component: SingleLotApproveComponent
+        path: 'approve-lot-request/:id',
+        component: SingleLotApproveComponent,
+        resolve: {
+          singlelotResponse: SingleLotResolveService
+        }
       },
       {
         path: 'lots-list',
-        component: LotsListTableComponent
+        component: LotsListTableComponent,
+        resolve: {
+          lotsResponse: LotsResolveService
+        }
       },
       {
         path: 'add-moderator',

@@ -2,6 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 import {Lot} from '../../models/lot/Lot';
+import {LotService} from "../../services/lot/lot.service";
+import {ServerResponse} from "../../models/server/ServerResponse";
+import {LotType} from "../../models/lot-type/LotType";
+import {LotStatus} from "../../models/lot-status/Lot-status";
+import {ActivatedRoute} from "@angular/router";
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-lots-list-table',
@@ -9,6 +16,8 @@ import {Lot} from '../../models/lot/Lot';
   styleUrls: ['./lots-list-table.component.css']
 })
 export class LotsListTableComponent implements OnInit {
+
+  public moment  = moment;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -25,19 +34,55 @@ export class LotsListTableComponent implements OnInit {
                         'lotStatus',
   ];
 
-  constructor() {
+  constructor(
+    private lotService: LotService,
+    private route: ActivatedRoute,
+  ) {
 
-    for ( let i = 0 ; i < 50 ; i++ ){
+    this.route.data.subscribe( (resolvedData: any ) => {
 
-      const lot: Lot = new Lot();
+      console.log('resolved data:' , resolvedData);
+      this.lots = resolvedData.lotsResponse.data as Lot[];
 
-      lot.lotName += ` ${i}`;
-      this.lots.push(lot);
+    } );
 
-    }//for i
+    this.onLotsResponse();
 
   }//constructor
 
+
+  async onLotsResponse(){
+
+    try{
+
+        for(let i =0; i< this.lots.length; i++){
+        
+          const lot  = this.lots[i];
+          
+          const typeLotResponse = await this.lotService.getTypeLotById(+lot.typeLot);
+
+          if(typeLotResponse.status===200){
+            lot.typeLot = typeLotResponse.data as LotType;
+          }//if
+
+          const statusLotResponse = await this.lotService.getStatusLotById(+lot.statusLot);
+
+          if(statusLotResponse.status===200){
+            lot.statusLot = statusLotResponse.data as LotStatus;
+          }//if
+
+        }//for
+        
+
+    }//try
+    catch ( ex ){
+
+      console.log( "Exception: " , ex );
+
+    }//catch
+
+
+  }//onLotsResponse
 
   ngOnInit() {
 
@@ -47,7 +92,7 @@ export class LotsListTableComponent implements OnInit {
 
   }//ngOnInit
 
-  predicate(  ){}
+
 
   applyFilter(filterValue: string) {
 

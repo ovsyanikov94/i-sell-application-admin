@@ -38,7 +38,7 @@ export class ApprovedLotComponent implements OnInit {
 
     this.approved  = this.admin.approvedLot.filter((l)=>{
 
-      return l.lotName.toLowerCase().indexOf(filterValue.toLowerCase())>-1;
+      return l.lotTitle.toLowerCase().indexOf(filterValue.toLowerCase())>-1;
     });
 
     this.length = this.approved.length;

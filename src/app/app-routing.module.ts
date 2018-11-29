@@ -8,7 +8,7 @@ import { ShowRolesComponent } from './components/show-roles/show-roles.component
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { ApprovedLotComponent } from './components/approved-lot/approved-lot.component';
 import { RejectLotComponent } from './components/reject-lot/reject-lot.component';
-import {PersonalDataComponent} from './components/personal-data/personal-data.component';
+import {PersonalDataComponent} from './components/personal-data/personal-data.component'
 import {UserListComponent} from './components/user-list/user-list.component';
 import { LotComponent } from './components/lot/lot.component';
 import {LotsListTableComponent} from './components/lots-list-table/lots-list-table.component';
@@ -20,11 +20,13 @@ import {RegistrationComponent} from './components/registration/registration.comp
 import {AddModeratorComponent} from "./components/add-moderator/add-moderator.component";
 import {LotsResolveService} from "./services/lot/lots-resolve.service";
 import {SingleLotResolveService} from "./services/lot/single-lot-resolve.service";
+import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+    canActivateChild: [ AuthGuard ],
     children: [
       {
         path: '',

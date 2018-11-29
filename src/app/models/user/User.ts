@@ -58,11 +58,11 @@ export class User {
     this._userConfirmPassword = value;
   }
 
-  get userPhoto(): string {
+  get userPhoto(): any {
     return this._userPhoto;
   }
 
-  set userPhoto(value: string) {
+  set userPhoto(value: any) {
     this._userPhoto = value;
   }
   get userCountSum(): number {

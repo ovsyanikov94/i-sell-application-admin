@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-
 import 'hammerjs';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,14 +11,6 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { ShowRolesComponent } from './components/show-roles/show-roles.component';
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { DeleteRoleModalComponent } from './modals/delete-role-modal/delete-role-modal.component';
-import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/deleteCategory.modal.component";
-import {MainComponent} from './components/main/main.component';
-import {CategoryComponent} from './components/category/category.component';
-import {MainContentComponent} from "./components/main-content/main-content.component";
-import { PersonalDataComponent } from "./components/personal-data/personal-data.component";
-import { UserListComponent } from "./components/user-list/user-list.component";
-import { SingleLotComponent } from "./components/single-lot/single-lot.component";
-import { SingleUserComponent } from "./components/single-user/single-user.component";
 import { SingleLotApproveComponent } from './components/single-lot-approve/single-lot-approve.component';
 import { LotsListTableComponent } from './components/lots-list-table/lots-list-table.component';
 import { RejectModalComponent } from './modals/reject-modal/reject-modal.component';
@@ -34,6 +24,14 @@ import { MessageModalComponent } from './modals/message-modal/message-modal.comp
 import { LotComponent } from './components/lot/lot.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { AuthModalComponent } from './modals/auth.modal/auth.modal.component';
+import {DeleteCategoryModalComponent} from "./modals/deleteCategory.modal/deleteCategory.modal.component";
+import {MainComponent} from './components/main/main.component';
+import {CategoryComponent} from './components/category/category.component';
+import {MainContentComponent} from "./components/main-content/main-content.component";
+import { PersonalDataComponent } from "./components/personal-data/personal-data.component";
+import { UserListComponent } from "./components/user-list/user-list.component";
+import { SingleLotComponent } from "./components/single-lot/single-lot.component";
+import { SingleUserComponent } from "./components/single-user/single-user.component";
 
 //SLIDER
 import { SliderModule } from 'angular-image-slider';
@@ -64,6 +62,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 //FILTERS
 import {FilterLengthPipe} from './filters/myfilter';
 
+//SERVICES
+import {AddUserService} from "./services/user/add-user.service";
 //SERVICES
 import { CategoryService } from './services/category/category.service';
 
@@ -128,12 +128,15 @@ declarations: [
     MatExpansionModule,
     MatTableModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
 
   providers: [
-    CategoryService
+    CategoryService,
+    AddUserService
   ],
+
   entryComponents: [
     DeleteCategoryModalComponent,
     DeleteRoleModalComponent,

@@ -24,7 +24,7 @@
           </mat-form-field>
 
           <mat-form-field class="example-full-width col-12">
-            <input (keyup)="authorize( $event )" name="userPassword" matInput type="password" [(ngModel)]="user.userPassword" placeholder="Пароль" [formControl]="passwordFormControl">
+            <input name="userPassword" matInput type="password" [(ngModel)]="user.userPassword" placeholder="Пароль" [formControl]="passwordFormControl">
             <mat-error *ngIf="passwordFormControl.hasError('required')">
               Пароль <strong>обязателен</strong>
             </mat-error>

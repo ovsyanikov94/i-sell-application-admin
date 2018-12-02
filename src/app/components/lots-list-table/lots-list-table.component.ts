@@ -22,7 +22,7 @@ export class LotsListTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  private lots: Lot[] = [];
+  public lots: Lot[] = [];
   public lotListSource: MatTableDataSource<Lot>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -56,9 +56,9 @@ export class LotsListTableComponent implements OnInit {
     try{
 
         for(let i =0; i< this.lots.length; i++){
-        
+
           const lot  = this.lots[i];
-          
+
           const typeLotResponse = await this.lotService.getTypeLotById(+lot.typeLot);
 
           if(typeLotResponse.status===200){
@@ -72,7 +72,7 @@ export class LotsListTableComponent implements OnInit {
           }//if
 
         }//for
-        
+
 
     }//try
     catch ( ex ){

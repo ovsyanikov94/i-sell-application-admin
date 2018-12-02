@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , Validators } from '@angular/forms';
 import { AuthModalComponent } from '../../modals/auth.modal/auth.modal.component';
-
+import {Router} from '@angular/router';
 //MODELS
 import { User } from '../../models/user/User';
 import { MatDialog } from '@angular/material';
@@ -31,9 +31,11 @@ export class AuthorizeComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
-
+    this.user.userLogin = 'rootAdmin';
+    this.user.userPassword = 'rootPassword';
   }
 
   ngOnInit() {
@@ -53,11 +55,23 @@ export class AuthorizeComponent implements OnInit {
     const authData: AuthData = new class implements AuthData {
       message: string;
     };
+    authData.message = "Вы вошли!";
 
     try{
+      console.log("Before Service");
 
       const response: ServerResponse = await this.authService.authorize(this.user);
 
+      if ( response.status === 200 ){
+          this.router.navigate(['/main/profile/']);
+      }//if
+      else{
+
+        this.openDialog({
+          message: response.message
+        });
+
+      }//else
       console.log('RESPONSE: ' , response);
 
     }//try
